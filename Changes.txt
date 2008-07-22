@@ -1,5 +1,8 @@
 Revision history for Perl extension Manage::Module::Changes.
 
+1.03  Tue Jul 22 14:41:00 2008
+	  - Rename CHANGES to Changes.txt to match my other modules
+
 1.02  Wed Jul 16 17:14:00 2008
 	  - Patch Build.PL and Makefile.PL to depend on DateTime V 0.42 because a user (thanx Mark)
 	  	has reported a failed test with an earlier version
