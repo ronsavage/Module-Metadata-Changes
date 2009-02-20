@@ -33,7 +33,7 @@ our @EXPORT = qw(
 
 );
 
-our $VERSION = '1.03';
+our $VERSION = '1.04';
 
 # ------------------------------------------------
 
@@ -117,8 +117,8 @@ sub convert
 
 	$$self{'config'} -> AddSection('Module');
 	$$self{'config'} -> newval('Module', 'Name', $module_name);
-	$$self{'config'} -> newval('Module', 'Configlog.Creator', __PACKAGE__ . " V $VERSION");
-	$$self{'config'} -> newval('Module', 'Configlog.Parser', "Config::IniFiles V $Config::IniFiles::VERSION");
+	$$self{'config'} -> newval('Module', 'Changelog.Creator', __PACKAGE__ . " V $VERSION");
+	$$self{'config'} -> newval('Module', 'Changelog.Parser', "Config::IniFiles V $Config::IniFiles::VERSION");
 	$self -> convert_body(@line) ;
 
 	# Return object for method chaining.
@@ -915,8 +915,8 @@ Here is a sample:
 
 	[Module]
 	Name=CGI::Session
-	Configlog.Creator=Module::Metadata::Changes V 1.00
-	Configlog.Parser=Config::IniFiles V 2.39
+	Changelog.Creator=Module::Metadata::Changes V 1.00
+	Changelog.Parser=Config::IniFiles V 2.39
 
 	[V 4.30]
 	Date=2008-04-25T00:00:00
@@ -961,11 +961,11 @@ The tokens are listed here in alphabetical order.
 
 =item Comments
 
-=item Configlog.Creator
+=item Changelog.Creator
 
 This token may be missing on a file being read, but will always be added to a file being written.
 
-=item Configlog.Parser
+=item Changelog.Parser
 
 This token may be missing. It is documentation, so everyone knows which module can definitely
 read this format. It too will always be added to a file being written.
@@ -1291,7 +1291,7 @@ C<Module::Changes>: http://search.cpan.org/dist/Module-Changes-0.05/
 
 =head1 Author
 
-C<Module::Metadata::Changes> was written by Ron Savage in 2008. [ron@savage.net.au]
+C<Module::Metadata::Changes> was written by Ron Savage I<E<lt>ron@savage.net.auE<gt>> in 2008.
 
 Home page: http://savage.net.au/index.html
 
