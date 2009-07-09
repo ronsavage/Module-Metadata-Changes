@@ -8,10 +8,16 @@ require 5.005_62;
 require Exporter;
 
 use Carp;
+
 use Config::IniFiles;
+
 use DateTime::Format::W3CDTF;
+
+use File::HomeDir;
+
 use HTML::Entities::Interpolate;
 use HTML::Template;
+
 use version;
 
 our @ISA = qw(Exporter);
@@ -45,7 +51,7 @@ our $VERSION = '1.05';
 	 _convert     => 0,
 	 _inFileName  => '',
 	 _outFileName => '',
-	 _pathForHTML => "$ENV{'HOME'}/httpd/prefork/htdocs/assets/templates/module/metadata/changes",
+	 _pathForHTML => '',
 	 _release     => '',
 	 _table       => 0,
 	 _urlForCSS   => '/assets/css/module/metadata/changes/ini.css',
@@ -521,8 +527,15 @@ sub report
 sub report_as_html
 {
 	my($self, @output) = @_;
-	my($template)      = HTML::Template -> new(path => $$self{'_pathForHTML'}, filename => 'ini.table.tmpl');
-	@output            = map
+
+	if (! $$self{'_pathForHTML'})
+	{
+		my($my_home)           = File::HomeDir -> my_home() || '.';
+		$$self{'_pathForHTML'} = "$my_home/httpd/prefork/htdocs/assets/templates/module/metadata/changes";
+	}
+
+	my($template) = HTML::Template -> new(path => $$self{'_pathForHTML'}, filename => 'ini.table.tmpl');
+	@output       = map
 	{
 		{
 			th => $Entitize{$$_[0]},
@@ -730,9 +743,11 @@ The default is './Changelog.ini'.
 
 =item pathForHTML
 
-The default is "$ENV{'HOME'}/httpd/prefork/htdocs/assets/templates/module/metadata/changes".
-
 This is path to the HTML::Template-style templates used by the 'table' and 'webPage' options.
+
+The default is "$my_home/httpd/prefork/htdocs/assets/templates/module/metadata/changes",
+where $my_home is what's returned by File::HomeDir -> my_home(). If this returns undef,
+then $my_home is set to '.'.
 
 =item release
 

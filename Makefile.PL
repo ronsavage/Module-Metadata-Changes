@@ -5,38 +5,39 @@ use ExtUtils::MakeMaker;
 
 WriteMakefile
 (
-	($] ge '5.005') ?
-	(
-		AUTHOR   => 'Ron Savage (ron@savage.net.au)',
-		ABSTRACT => "Manage a module's CHANGES file",
-    ) : (),
-	clean =>
-	{
-		FILES => 'blib/* Makefile MANIFEST Module-Metadata-Changes-*'
-	},
-	dist =>
-	{
-		COMPRESS => 'gzip',
-		SUFFIX   => 'gz'
-	},
-	DISTNAME  => 'Module-Metadata-Changes',
-	NAME      => 'Module::Metadata::Changes',
-	PL_FILES  => {},
-	PREREQ_PM =>
-	{
-		Carp                        => 0,
-		Config::IniFiles            => 0,
-		DateTime                    => 0.42,
-		DateTime::Format::HTTP      => 0,
-		DateTime::Format::Strptime  => 0,
-		DateTime::Format::W3CDTF    => 0,
-		HTML::Entities::Interpolate => 0,
-		HTML::Template              => 0,
-		Test::More                  => 0,
-		Test::Pod                   => 0,
-		version                     => 0,
-	},
-	VERSION_FROM => 'lib/Module/Metadata/Changes.pm',
+ ($] ge '5.005') ?
+ (
+  AUTHOR   => 'Ron Savage (ron@savage.net.au)',
+  ABSTRACT => "Manage a module's CHANGES file",
+ ) : (),
+ clean =>
+ {
+	 FILES => 'blib/* Makefile MANIFEST Module-Metadata-Changes-*'
+ },
+ dist =>
+ {
+	 COMPRESS => 'gzip',
+	 SUFFIX   => 'gz'
+},
+ DISTNAME  => 'Module-Metadata-Changes',
+ NAME      => 'Module::Metadata::Changes',
+ PL_FILES  => {},
+ PREREQ_PM =>
+ {
+	 Carp                        => 0,
+	 Config::IniFiles            => 0,
+	 DateTime                    => 0.42,
+	 DateTime::Format::HTTP      => 0,
+	 DateTime::Format::Strptime  => 0,
+	 DateTime::Format::W3CDTF    => 0,
+	 File::HomeDir               => 0,
+	 HTML::Entities::Interpolate => 0,
+	 HTML::Template              => 0,
+	 Test::More                  => 0,
+	 Test::Pod                   => 0,
+	 version                     => 0,
+ },
+ VERSION_FROM => 'lib/Module/Metadata/Changes.pm',
 );
 
 print "\a\n";
