@@ -10,12 +10,12 @@ use Module::Metadata::Changes;
 my($config) = Module::Metadata::Changes -> new({verbose => 0});
 
 isa_ok($config, 'Module::Metadata::Changes', 'Result of new()');
-is(-e './Changes', 1, './Changes file exists before conversion');
+is(-e './Non.standard.name', 1, './Non.standard.name file exists before conversion');
 
 # Override the default file name to be converted: CHANGES.
-# Convert ./Changes to ./Changelog.ini.
+# Convert ./Non.standard.name to ./Changelog.ini.
 
-my($result) = $config -> convert('./Changes');
+my($result) = $config -> convert('./Non.standard.name');
 
 isa_ok($result, 'Module::Metadata::Changes', 'Result of convert()');
 is(-e './Changelog.ini', 1, './Changelog.ini exists after conversion');

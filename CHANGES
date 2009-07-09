@@ -1,5 +1,10 @@
 Revision history for Perl extension Manage::Module::Changes.
 
+1.05  Thu Jul  8 10:08:00 2009
+	  - Rename t/Changes to t/Non.standard.name because under MS Windows there is no difference
+	  	between the name t/Changes and the other test file t/CHANGES
+	  - Patch t/02.convert.t to match
+
 1.04  Wed Feb 18 11:46:00 2009
 	  - Output 'Changelog.*' rather than 'Configlog.*' in the [Module] section of Changelog.ini
 	  - Rename Changes.txt to CHANGES because search.cpan.org won't display Changes.txt
