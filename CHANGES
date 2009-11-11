@@ -1,5 +1,8 @@
 Revision history for Perl extension Manage::Module::Changes.
 
+1.06  Thu Nov 12 10:19:00 2009
+	  - Run dos2unix on all files.
+
 1.05  Thu Jul  8 10:08:00 2009
 	  - Rename t/Changes to t/Non.standard.name because under MS Windows there is no difference
 	  	between the name t/Changes and the other test file t/CHANGES
