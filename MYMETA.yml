@@ -14,6 +14,10 @@ meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: Module-Metadata-Changes
+provides:
+  Module::Metadata::Changes:
+    file: lib/Module/Metadata/Changes.pm
+    version: 1.06
 requires:
   Carp: 0
   Config::IniFiles: 0
