@@ -1,5 +1,8 @@
 Revision history for Perl extension Manage::Module::Changes.
 
+1.07  Wed Feb 10 13:53:00 2010
+	- Add META.yml. Update MANIFEST.SKIP. Add MANIFEST and MYMETA.yml.
+
 1.06  Thu Nov 12 10:19:00 2009
 	  - Run dos2unix on all files.
 
