@@ -152,7 +152,7 @@ The name of a file to be written.
 
 The path to the HTML::Template-style templates used by the -table and -webPage switches.
 
-Defaults to $ENV{'HOME'}/httpd/prefork/htdocs/assets/templates/module/metadata/changes.
+Defaults to /var/www/assets/templates/module/metadata/changes.
 
 =item -release aVersionNumber
 

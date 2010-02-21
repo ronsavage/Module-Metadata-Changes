@@ -13,8 +13,6 @@ use Config::IniFiles;
 
 use DateTime::Format::W3CDTF;
 
-use File::HomeDir;
-
 use HTML::Entities::Interpolate;
 use HTML::Template;
 
@@ -530,8 +528,7 @@ sub report_as_html
 
 	if (! $$self{'_pathForHTML'})
 	{
-		my($my_home)           = File::HomeDir -> my_home() || '.';
-		$$self{'_pathForHTML'} = "$my_home/httpd/prefork/htdocs/assets/templates/module/metadata/changes";
+		$$self{'_pathForHTML'} = '/var/www/assets/templates/module/metadata/changes';
 	}
 
 	my($template) = HTML::Template -> new(path => $$self{'_pathForHTML'}, filename => 'ini.table.tmpl');
@@ -557,7 +554,7 @@ sub report_as_html
 
 		$content = $template -> output();
 	}
-	
+
 	print $content;
 
 } # End of report_as_html.
@@ -686,7 +683,7 @@ C<Module::Metadata::Changes> - Manage a module's machine-readable C<Changelog.in
 	shell>ini.report.pl -h
 	shell>ini.report.pl -c
 	shell>ini.report.pl -r 1.23
-	shell>ini.report.pl -w > $HOME/httpd/prefork/htdocs/Changelog.html
+	shell>sudo ini.report.pl -w > /var/www/Changelog.html
 	shell>perl -MModule::Metadata::Changes -e 'Module::Metadata::Changes->new()->convert()'
 	shell>perl -MModule::Metadata::Changes -e 'print Module::Metadata::Changes->new()->read()->get_latest_version()'
 
@@ -745,9 +742,7 @@ The default is './Changelog.ini'.
 
 This is path to the HTML::Template-style templates used by the 'table' and 'webPage' options.
 
-The default is "$my_home/httpd/prefork/htdocs/assets/templates/module/metadata/changes",
-where $my_home is what's returned by File::HomeDir -> my_home(). If this returns undef,
-then $my_home is set to '.'.
+The default is '/var/www/assets/templates/module/metadata/changes'.
 
 =item release
 
@@ -1280,26 +1275,6 @@ advise me on a suitable C<DateTime::Format::*> module to use.
 
 =back
 
-=head1 Required Modules
-
-=over 4
-
-=item use Carp
-
-=item DateTime::Format::HTTP
-
-=item DateTime::Format::Strptime
-
-=item DateTime::Format::W3CDTF
-
-=item HTML::Entities::Interpolate
-
-=item HTML::Template
-
-=item version
-
-=back
-
 =head1 See also
 
 C<Module::Changes>: http://search.cpan.org/dist/Module-Changes-0.05/
@@ -1312,8 +1287,7 @@ Home page: http://savage.net.au/index.html
 
 =head1 Copyright
 
-Australian copyright (c) 2008, Ron Savage. All rights reserved.
-
+Australian copyright (c) 2008, Ron Savage.
 	All Programs of mine are 'OSI Certified Open Source Software';
 	you can redistribute them and/or modify them under the terms of
 	The Artistic License, a copy of which is available at:
