@@ -17,7 +17,7 @@ name: Module-Metadata-Changes
 provides:
   Module::Metadata::Changes:
     file: lib/Module/Metadata/Changes.pm
-    version: 1.06
+    version: 1.08
 requires:
   Carp: 0
   Config::IniFiles: 0
@@ -32,4 +32,4 @@ requires:
   version: 0
 resources:
   license: http://opensource.org/licenses/artistic-license.php
-version: 1.06
+version: 1.08
