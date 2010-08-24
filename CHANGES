@@ -3,8 +3,6 @@ Revision history for Perl extension Manage::Module::Changes.
 1.08  Sun Feb 21 12:56:13 2010
 	- Remove text 'All rights reserved' (for Debian licensing).
 	- Remove POD heads 'Required Modules' and 'Changes'.
-	- Replace personal doc root with /var/www.
-	- Use namespace::autoclean with Moose.
 
 1.07  Wed Feb 10 13:53:00 2010
 	- Add META.yml. Update MANIFEST.SKIP. Add MANIFEST and MYMETA.yml.
