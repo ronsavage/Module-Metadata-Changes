@@ -23,7 +23,7 @@ CGI::Session Change Log
 
 4.29_1 - Saturday, March 15, 2008
 
-    Special Thanks to Ron Savage who did the bulk of the work to put this release together. 
+    Special Thanks to Ron Savage who did the bulk of the work to put this release together.
 
     * FIX: Patch CGI::Session to fix RT#29138 (Patch by Barry Friedman)
     * NEW: Add a note to CGI::Session's POD referring to utf8 problems, and include references
@@ -64,7 +64,7 @@ CGI::Session Change Log
 
 4.20 - Monday, December 4, 2006
 
-    * INTERNAL: No Changes since 4.20_1. Declaring stable. 
+    * INTERNAL: No Changes since 4.20_1. Declaring stable.
 
 4.20_1 - Friday, November 24, 2006
 
@@ -76,14 +76,14 @@ CGI::Session Change Log
     * FIX: A documentation bug in find() was fixed (Matt LeBlanc)
     * FIX: Documented how to declare a database handle to be used on demand, which was introduced
            in 4.04. (Mark Stosberg)
-    * FIX: Connections made with SQLite now disconnect only when appropriate, instead of always. 
+    * FIX: Connections made with SQLite now disconnect only when appropriate, instead of always.
            This addresses a symptom seen as "attempt to prepare on inactive database handle"
            (Jaldhar Vyas, Sherzod, Mark Stosberg)
     * FIX: Args to the constructor for CGI::Session and the drivers are now always shallow
-           copied rather than used directly, to prevent modification. 
+           copied rather than used directly, to prevent modification.
            (RT#21952, Franck Porcher, Sherzod, Mark Stosberg)
     * FIX: The documentation for expire($param, $time) was made more explicit
-           (pjf, Mark Stosberg) 
+           (pjf, Mark Stosberg)
     * NEW: Added recommended use of flush() to the Synopsis (Michael Renner, RT#22333)
     * NEW: Added links to Japanese translations of the documentation (Makio Tsukamoto)
            http://digit.que.ne.jp/work/index.cgi?Perldoc/ja
@@ -92,7 +92,7 @@ CGI::Session Change Log
     * INTERNAL: new() and load() were refactored (Ali Isik)
     * INTERNAL: renamed some environment variables used for testing (Ron Savage)
     * INTERNAL: Multi key-value syntax of param() now always returns number of keys
-      successfully processed, 0 if no key/values were processed. 
+      successfully processed, 0 if no key/values were processed.
 
 4.14 - Sunday, June 11, 2006
 
@@ -101,8 +101,8 @@ CGI::Session Change Log
     * FIX: param() called with two parameters now returns the value set, if any (RT#18912) (Matt LeBlanc)
     * FIX: driver, serializer, and id generator names are now untainted (RT#18873) (Matt LeBlanc)
     * INTERNAL: automatic flushing has been documented to be unreliable, although
-      it was recommended in the past. Automatic flushing can be affected adversely 
-      in persistent environments and in some cases by third party software. There are 
+      it was recommended in the past. Automatic flushing can be affected adversely
+      in persistent environments and in some cases by third party software. There are
       also some cases in which flushing happened automatically in 3.x, but quit working
       with 4.x. See these tickets for details.
 
@@ -122,7 +122,7 @@ CGI::Session Change Log
     * SECURITY: Fix possible SQL injection attack. (RT#18578, DMUEY)
 
 4.11 - Friday, March 31, 2006
-    
+
     * FIX: Since 4.10, using name() as a class method was broken. This has
       been fixed, and regression tests for both uses have been added. (Matt LeBlanc)
 

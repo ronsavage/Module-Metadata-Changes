@@ -1,5 +1,9 @@
 Revision history for Perl extension Manage::Module::Changes.
 
+1.09  Tue Fev 15 14:59:00 2011
+	- Replace /usr/bin/perl with /usr/bin/env perl.
+	- Replace common::sense with use strict and use warnings, to get uninit var warnings.
+
 1.08  Sun Feb 21 12:56:13 2010
 	- Remove text 'All rights reserved' (for Debian licensing).
 	- Remove POD heads 'Required Modules' and 'Changes'.
