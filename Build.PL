@@ -8,12 +8,11 @@ Module::Build -> new
  dist_author    => 'Ron Savage <ron@savage.net.au>',
  build_requires =>
  {
-	 Test::More => 0,
-	 Test::Pod  => 0,
+	 Test::More => 0.96,
+	 Test::Pod  => 1.41,
  },
  requires =>
  {
-	 Carp                        => 0,
 	 Config::IniFiles            => 0,
 	 DateTime                    => 0.42,
 	 DateTime::Format::HTTP      => 0,

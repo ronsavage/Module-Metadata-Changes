@@ -24,7 +24,6 @@ WriteMakefile
  PL_FILES  => {},
  PREREQ_PM =>
  {
-	 Carp                        => 0,
 	 Config::IniFiles            => 0,
 	 DateTime                    => 0.42,
 	 DateTime::Format::HTTP      => 0,
@@ -32,8 +31,8 @@ WriteMakefile
 	 DateTime::Format::W3CDTF    => 0,
 	 HTML::Entities::Interpolate => 0,
 	 HTML::Template              => 0,
-	 Test::More                  => 0,
-	 Test::Pod                   => 0,
+	 Test::More                  => 0.96,
+	 Test::Pod                   => 1.41,
 	 version                     => 0,
  },
  VERSION_FROM => 'lib/Module/Metadata/Changes.pm',

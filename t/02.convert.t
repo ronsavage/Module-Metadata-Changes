@@ -7,7 +7,7 @@ use Module::Metadata::Changes;
 
 # ----------------------------
 
-my($config) = Module::Metadata::Changes -> new({verbose => 0});
+my($config) = Module::Metadata::Changes -> new(verbose => 0);
 
 isa_ok($config, 'Module::Metadata::Changes', 'Result of new()');
 is(-e './Non.standard.name', 1, './Non.standard.name file exists before conversion');
