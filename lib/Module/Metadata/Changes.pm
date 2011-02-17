@@ -618,6 +618,8 @@ C<Module::Metadata::Changes> - Manage a module's machine-readable C<Changelog.in
 
 =head1 Synopsis
 
+=head2 One-liners
+
 These examples use CHANGES and Changelog.ini in the 'current' directory.
 
 	shell>ini.report.pl -h
@@ -629,9 +631,44 @@ These examples use CHANGES and Changelog.ini in the 'current' directory.
 	shell>perl -MModule::Metadata::Changes -e 'print Module::Metadata::Changes->new->read->report'
 	shell>perl -MModule::Metadata::Changes -e 'print Module::Metadata::Changes->new(release=>"2.00")->read->report'
 
-This module ships with C<ini.report.pl> in the bin/ directory.
+This module ships with C<ini.report.pl> in the bin/ directory. It's installed along with the module.
 
 Note: This module uses C<Config::IniFiles>, which discards commas when reading files.
+
+=head2 Reporters
+
+With a script like this:
+
+	#!/usr/bin/env perl
+
+	use feature 'say';
+	use strict;
+	use warnings;
+
+	use File::chdir;
+
+	use Module::Metadata::Changes;
+
+	# ------------------------------------------------
+
+	my($work) = '/home/ron/perl.modules';
+	my($m)    = Module::Metadata::Changes -> new;
+
+	opendir(INX, $work) || die "Can't opendir($work)";
+	my(@name) = sort grep{! /^\.\.?$/} readdir INX;
+	closedir INX;
+
+	my($version);
+
+	for my $name (@name)
+	{
+		$CWD     = "$work/$name";
+		$version = $m -> read -> get_latest_version;
+
+		say "$name V $version";
+	}
+
+you can get a report of the latest version number, from CHANGES, for each module in your vast library.
 
 =head1 Description
 
