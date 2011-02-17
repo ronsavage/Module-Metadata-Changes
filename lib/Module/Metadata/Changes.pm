@@ -618,6 +618,8 @@ C<Module::Metadata::Changes> - Manage a module's machine-readable C<Changelog.in
 
 =head1 Synopsis
 
+These examples use CHANGES and Changelog.ini in the 'current' directory.
+
 	shell>ini.report.pl -h
 	shell>ini.report.pl -c
 	shell>ini.report.pl -r 1.23
