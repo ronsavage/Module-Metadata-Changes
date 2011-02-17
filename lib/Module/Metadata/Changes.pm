@@ -622,8 +622,10 @@ C<Module::Metadata::Changes> - Manage a module's machine-readable C<Changelog.in
 	shell>ini.report.pl -c
 	shell>ini.report.pl -r 1.23
 	shell>sudo ini.report.pl -w > /var/www/Changelog.html
-	shell>perl -MModule::Metadata::Changes -e 'Module::Metadata::Changes->new->convert'
+	shell>perl -MModule::Metadata::Changes -e 'Module::Metadata::Changes->new(convert => 1)->run'
 	shell>perl -MModule::Metadata::Changes -e 'print Module::Metadata::Changes->new->read->get_latest_version'
+	shell>perl -MModule::Metadata::Changes -e 'print Module::Metadata::Changes->new->read->report'
+	shell>perl -MModule::Metadata::Changes -e 'print Module::Metadata::Changes->new(release=>"2.00")->read->report'
 
 This module ships with C<ini.report.pl> in the bin/ directory.
 
@@ -695,8 +697,9 @@ In that case, reports (text, HTML) are restricted to only the given version.
 The default ('') means reports contain all versions.
 
 'release' was chosen, rather than 'version', in order to avoid a clash with 'verbose',
-since all options could then be abbreviated to 1 letter. Also, a lot of other software
-uses -r to refer to release/version.
+since all options could then be abbreviated to 1 letter (when running ini.report.pl).
+
+Also, a lot of other software uses -r to refer to release/version.
 
 =item table
 

@@ -13,16 +13,14 @@ Module::Build -> new
  },
  requires =>
  {
-	 Config::IniFiles            => 0,
-	 DateTime                    => 0.42,
-	 DateTime::Format::HTTP      => 0,
-	 DateTime::Format::Strptime  => 0,
-	 DateTime::Format::W3CDTF    => 0,
-	 HTML::Entities::Interpolate => 0,
-	 HTML::Template              => 0,
-	 Test::More                  => 0,
-	 Test::Pod                   => 0,
-	 version                     => 0,
+	 Config::IniFiles            => 2.66,
+	 DateTime                    => 0.66,
+	 DateTime::Format::HTTP      => 0.40,
+	 DateTime::Format::Strptime  => 1.5000,
+	 DateTime::Format::W3CDTF    => 0.06,
+	 HTML::Entities::Interpolate => 1.03,
+	 HTML::Template              => 2.9,
+	 version                     => 0.82,
  },
 ) -> create_build_script();
 
