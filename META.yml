@@ -3,8 +3,8 @@ abstract: "Manage a module's CHANGES file"
 author:
   - 'Ron Savage <ron@savage.net.au>'
 build_requires:
-  Test::More: 0
-  Test::Pod: 0
+  Test::More: 0.96
+  Test::Pod: 1.41
 configure_requires:
   Module::Build: 0.36
 generated_by: 'Module::Build version 0.3603'
@@ -16,19 +16,16 @@ name: Module-Metadata-Changes
 provides:
   Module::Metadata::Changes:
     file: lib/Module/Metadata/Changes.pm
-    version: 1.08
+    version: 2.00
 requires:
-  Carp: 0
-  Config::IniFiles: 0
-  DateTime: 0.42
-  DateTime::Format::HTTP: 0
-  DateTime::Format::Strptime: 0
-  DateTime::Format::W3CDTF: 0
-  HTML::Entities::Interpolate: 0
-  HTML::Template: 0
-  Test::More: 0
-  Test::Pod: 0
-  version: 0
+  Config::IniFiles: 2.66
+  DateTime: 0.66
+  DateTime::Format::HTTP: 0.4
+  DateTime::Format::Strptime: 1.5
+  DateTime::Format::W3CDTF: 0.06
+  HTML::Entities::Interpolate: 1.03
+  HTML::Template: 2.9
+  version: 0.82
 resources:
   license: http://opensource.org/licenses/artistic-license.php
-version: 1.08
+version: 2.00
