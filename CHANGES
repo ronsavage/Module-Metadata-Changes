@@ -1,7 +1,11 @@
 Revision history for Perl extension Manage::Module::Changes.
 
-2.00  Tue Feb 15 14:59:00 2011
-	- Rewrite to allow client access to the memory-based version of Changelog.ini.
+2.00  Tue Feb 30 14:59:00 2011
+	- Rewrite, to allow client access to the memory-based version of Changelog.ini.
+	- new() now takes a hash, not a hashref, since I've adopted the fabulous Hash::FieldHash.
+	- Replace eval{} with Try::Tiny.
+	- Only remove commas from lines which match /^\d/, since the digit(s) are assumed to be a version #,
+	  and hence the commas are assumed to be embedded in dates.
 	- Discontinue convert() and convert_body(), which were available in V 1.
 	- What used to be convert() is now writer(reader() ).
 	- What used to be convert_body() is now transform().
