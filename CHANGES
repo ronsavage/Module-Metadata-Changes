@@ -1,6 +1,6 @@
 Revision history for Perl extension Manage::Module::Changes.
 
-2.00  Tue Feb 30 14:59:00 2011
+2.00  Tue Feb 15 14:59:00 2011
 	- Rewrite, to allow client access to the memory-based version of Changelog.ini.
 	- new() now takes a hash, not a hashref, since I've adopted the fabulous Hash::FieldHash.
 	- Replace eval{} with Try::Tiny.

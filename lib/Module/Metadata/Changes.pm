@@ -633,13 +633,13 @@ sub writer
 
 =head1 NAME
 
-L<Module::Metadata::Changes> - Manage a machine-readable C<Changelog.ini> file, with optional conversion from C<CHANGES> style
+L<Module::Metadata::Changes> - Manage a machine-readable Changelog.ini file, with optional conversion from CHANGES style
 
 =head1 Synopsis
 
 =head2 One-liners
 
-These examples use C<CHANGES> and C<Changelog.ini> in the 'current' directory.
+These examples use CHANGES and Changelog.ini in the 'current' directory.
 
 The command line options (except for -h) correspond to the options documented under L</Constructor and initialization>, below.
 
@@ -654,7 +654,7 @@ The command line options (except for -h) correspond to the options documented un
 
 L<Module::Metadata::Changes> ships with C<ini.report.pl> in the bin/ directory. It's installed along with the module.
 
-Also, L<Module::Metadata::Changes> uses L<Config::IniFiles> to read and write C<Changelog.ini> files.
+Also, L<Module::Metadata::Changes> uses L<Config::IniFiles> to read and write Changelog.ini files.
 
 =head2 Reporters
 
@@ -689,13 +689,13 @@ With a script like this:
 		say "$name V $version";
 	}
 
-you can get a report of the latest version number, from C<Changelog.ini>, for each module in your vast library.
+you can get a report of the latest version number, from Changelog.ini, for each module in your vast library.
 
 =head1 Description
 
 L<Module::Metadata::Changes> is a pure Perl module.
 
-It allows you to convert old-style C<CHANGES> files, and to read and write C<Changelog.ini> files.
+It allows you to convert old-style CHANGES files, and to read and write Changelog.ini files.
 
 =head1 Distributions
 
@@ -805,11 +805,23 @@ If the value is 1, the 'table' option outputs a complete web page.
 
 =back
 
-=head1 Method: errstr
+=head1 Methods
+
+=head2 o config()
+
+Returns the L<Config::IniFiles> object, from which you can extract all the data.
+
+This method I<must> be called after calling C<read()>.
+
+See C<scripts/report.names.pl> for sample code.
+
+The names of the sections, [Module] and [V 1.23], and the keys under each, are documented in the FAQ.
+
+=head2 o errstr()
 
 Returns the last error message, or ''.
 
-=head1 Method: get_latest_release()
+=head2 o get_latest_release()
 
 Returns an hash ref of the latest release's data.
 
@@ -819,35 +831,37 @@ The hash keys are (most of) the reserved tokens, as discussed below in the FAQ.
 
 Some reserved tokens, such as EOT, make no sense as hash keys.
 
-=head1 Method: get_latest_version()
+=head2 o get_latest_version()
 
 Returns the version number of the latest version.
 
 Returns '' if there is no such version.
 
-=head1 Method: parse_datetime()
+=head2 o parse_datetime()
 
 Used by C<transform()>.
 
-=head1 Method: parse_datetime_1()
+=head2 o parse_datetime_1()
 
 Used by C<transform()>.
 
-=head1 Method: parse_datetime_2()
+=head2 o parse_datetime_2()
 
 Used by C<transform()>.
 
-=head1 Method: read([$input_file_name])
+=head2 o read([$input_file_name])
 
 This method reads the given file, using L<Config::IniFiles>.
 
 The $input_file_name is optional. It defaults to 'Changelog.ini'.
 
+See config().
+
 Return value: The object, for method chaining.
 
-=head1 Method: reader([$input_file_name])
+=head2 o reader([$input_file_name])
 
-This method parses the given file, assuming it's format is the common-or-garden C<CHANGES> style.
+This method parses the given file, assuming it's format is the common-or-garden CHANGES style.
 
 The $input_file_name is optional. It defaults to 'CHANGES'.
 
@@ -859,7 +873,7 @@ Return value: An arrayref of hashrefs, i.e. the return value of C<transform()>.
 
 This value is suitable for passing to C<writer()>.
 
-=head1 Method: report()
+=head2 o report()
 
 Displays various items for one or all releases.
 
@@ -877,7 +891,7 @@ Output is to STDOUT.
 
 Clearly, you should not use -v to get logging output when using text or HTML output.
 
-=head1 Method: report_as_html()
+=head2 o report_as_html()
 
 Displays various items as HTML for one or all releases.
 
@@ -889,7 +903,7 @@ Warning: This method must be called via the C<report()> method.
 
 Output is to STDOUT.
 
-=head1 Method: run()
+=head2 o run()
 
 Use the options passed to C<new()> to determine what to do.
 
@@ -899,18 +913,20 @@ If you don't set 'convert' to 1 (i.e. use 0 - the default), C<run()> will call C
 
 Return value: 0.
 
-=head1 Method: transform(...)
+=head2 o transform(@line)
 
 Transform the memory-based version of CHANGES into an arrayref of hashrefs, where each array element 
 holds data for 1 version.
 
 Must be called by C<reader()>.
 
+The array is the text read in from CHANGES.
+
 C<transform()> stores the arrayref of hashrefs in $obj -> changes(), for use by C<writer()>.
 
 Return value: The object, for method chaining.
 
-=head1 Method: validate($file_name)
+=head2 o validate($file_name)
 
 This method is used by C<read()> to validate the contents of the file read in.
 
@@ -918,9 +934,11 @@ C<validate()> does not read the file.
 
 C<validate()> calls die when a validation test fails.
 
+The file name is just used for reporting.
+
 Return value: The object, for method chaining.
 
-=head1 Method: writer([$output_file_name])
+=head2 o writer([$output_file_name])
 
 This method writes the arrayref stored in $obj -> changes(), using L<Config::IniFiles>, to the given file.
 
@@ -940,17 +958,25 @@ Return value: The object, for method chaining.
 
 =item o Invalid dates
 
-Invalid dates in C<CHANGES> cannot be distinguished from comments. That means that if the output file is
+Invalid dates in CHANGES cannot be distinguished from comments. That means that if the output file is
 missing one or more versions, it's because of those invalid dates.
 
 =item o Invalid day-of-week (dow)
 
-If C<CHANGES> includes the dow, it is not cross-checked with the date, so if the dow is wrong,
+If CHANGES includes the dow, it is not cross-checked with the date, so if the dow is wrong,
 you will not get an error generated.
 
 =back
 
-=item o What is the format of C<Changelog.ini>?
+=item o How do I display Changelog.ini?
+
+See C<bin/ini.report.pl>. It outputs text or HTML.
+
+=item o What is the format of Changelog.ini?
+
+See also the next question.
+
+See C<scripts/report.names.pl> for sample code.
 
 Here is a sample:
 
@@ -985,10 +1011,6 @@ Here is a sample:
 	* NEW: name is now an instance method (RT#17979) (Matt LeBlanc)
 	EOT
 
-=item o How do I display such a file?
-
-See C<bin/ini.report.pl>. It outputs text or HTML.
-
 =item o What are the reserved tokens in this format?
 
 I'm using tokens to refer to both things in [] such as Module, and things on the left hand side
@@ -996,26 +1018,39 @@ of the = signs, such as Date.
 
 And yes, these tokens are case-sensitive.
 
-The tokens are listed here in alphabetical order.
+Under the [Module] section, the tokens are:
+
+=over 4
+
+=item o Changelog.Creator
+
+sample: Changelog.Creator=Module::Metadata::Changes V 2.00
+
+=item o Changelog.Parser
+
+Sample: Changelog.Parser=Config::IniFiles V 2.66
+
+=item o Name
+
+Sample: Name=Manage::Module::Changes
+
+=back
+
+Under each version's section, whose name is like [V 1.23], the token are as follows.
+
+L<Config::IniFiles> calls the V in [V 1.23] a Group Name.
 
 =over 4
 
 =item o Comments
 
-=item o Changelog.Creator
-
-This token may be missing on a file being read, but will always be added to a file being written.
-
-=item o Changelog.Parser
-
-This token may be missing. It is documentation, so everyone knows which module can definitely
-read this format. It too will always be added to a file being written.
+Sample: Comments=- Original version
 
 =item o Date
 
 The datetime of the release, in W3CDTF format.
 
-This is used as, say, Date=2008-04-25T00:00:00, in the [V 1.23] section of a C<Changelog.ini> file.
+Sample: Date=2008-05-02T15:15:45
 
 I know the embedded 'T' makes this format a bit harder to read, but the idea is that such files
 will normally be processed by a program.
@@ -1024,7 +1059,7 @@ will normally be processed by a program.
 
 The module author's recommendation to the end user.
 
-This enables the end user to quickly grep the C<Changelog.ini>, or the output of C<ini.report.pl>,
+This enables the end user to quickly grep the Changelog.ini, or the output of C<ini.report.pl>,
 for things like security fixes and API changes.
 
 Run 'bin/ini.report.pl -h' for help.
@@ -1066,24 +1101,6 @@ Config::IniFiles uses EOT to terminate multi-line comments.
 
 If C<transform()> finds a line beginning with EOT, it jams a '-' in front of it.
 
-=item o Module
-
-This is used as the name of a section. I.e. as [Module].
-
-=item o Name
-
-The name of the module.
-
-This is used as, say, Name=Module::Metadata::Changes, in the [Module] section of a C<Changelog.ini> file.
-
-=item o V
-
-This is used as the name of a section, i.e. as in [V 1.23].
-
-The V makes it easy for the validation code to ensure there is a least one release in the file.
-
-L<Config::IniFiles> calls the V in [V 1.23] a Group Name.
-
 =back
 
 =item o Why aren't there more reserved tokens?
@@ -1100,20 +1117,20 @@ interpretation of those choices.
 
 Truely, there is no point in any particular token if it is not given a consistent meaning.
 
-=item o You can simply add your own to your C<Changelog.ini> file
+=item o You can simply add your own to your Changelog.ini file
 
 They will then live on as part of the file.
 
 =back
 
-Special processing is normally only relevant when converting an old-style C<CHANGES> file
-to a new-style C<Changelog.ini> file.
+Special processing is normally only relevant when converting an old-style CHANGES file
+to a new-style Changelog.ini file.
 
 However, if you think the new tokens are important enough to be displayed as part of the text
 and HTML format reports, let me know.
 
 I have deliberately not included the Comments in reports since you can always just examine the
-C<Changelog.ini> file itself for such items. But that too could be changed.
+Changelog.ini file itself for such items. But that too could be changed.
 
 =item o Are single-line comments acceptable?
 
@@ -1188,7 +1205,7 @@ XML? Nope. It's great is I<some> situations, but too visually dense and slow to 
 
 No. That info will be in the changed C<Build.PL> or C<Makefile.PL> files.
 
-It's a pointless burden to make the module's author I<also> add that to C<Changelog.ini>.
+It's a pointless burden to make the module's author I<also> add that to Changelog.ini.
 
 =item o Who said you had the power to decide on this format?
 
@@ -1203,10 +1220,10 @@ One of the reports I produce from this database is visible here:
 http://savage.net.au/Perl-modules.html
 
 Ideally, there will come a time when all of a person's modules, if not the whole of CPAN,
-will have C<Changelog.ini> files, so producing such a report will be easy, and hence will be
+will have Changelog.ini files, so producing such a report will be easy, and hence will be
 that much more likely to happen.
 
-=item o Why not use, say, L<Config::Tiny> to process C<Changelog.ini> files?
+=item o Why not use, say, L<Config::Tiny> to process Changelog.ini files?
 
 Because L<Config::Tiny> contains this line, 's/\s\;\s.+$//g;', so it will mangle
 text containing English semi-colons.
@@ -1214,7 +1231,7 @@ text containing English semi-colons.
 Also, authors add comments per release, and most C<Config::*> modules only handle lines
 of the type X=Y.
 
-=item o How are the old C<CHANGES> files parsed?
+=item o How are the old CHANGES files parsed?
 
 The first line is scanned looking for /X::Y/ or /X\.$/. And yes, it fails for modules
 which identify themselves like Fuse-PDF not at the end of the line.
@@ -1242,7 +1259,7 @@ For example, version numbers like '3.x' are turned into '3.'.
 
 You'll simply have to scrutinize (which means 'read I<carefully>') the output of this conversion process.
 
-If a C<CHANGES> file is not handled by the current version, log a bug report on Request Tracker:
+If a CHANGES file is not handled by the current version, log a bug report on Request Tracker:
 http://rt.cpan.org/Public/
 
 =item o How are datetimes in old-style files parsed?
@@ -1266,7 +1283,7 @@ Other date parsing modules are L<Date::Manip>, L<Date::Parse> and L<Regexp::Comm
 
 =item o Why did you choose these 2 modules?
 
-I had a look at a few C<CHANGES> files, and these made sense.
+I had a look at a few CHANGES files, and these made sense.
 
 If appropriate, other modules can be added to the algorithm.
 
@@ -1298,7 +1315,7 @@ It's too complex for this tiny project.
 
 Log a bug report on Request Tracker: http://rt.cpan.org/Public/
 
-If it concerns failure to convert a specific C<CHANGES> file, just provide the name of
+If it concerns failure to convert a specific CHANGES file, just provide the name of
 the module and the version number.
 
 It would help - if the problem is failure to parse a specific datetime format - if you could
