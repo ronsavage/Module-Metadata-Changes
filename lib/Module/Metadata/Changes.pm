@@ -152,6 +152,15 @@ sub new
 sub parse_datetime
 {
 	my($self, $candidate) = @_;
+
+	# One of the modules DateTime::Format::HTTP or DateTime::Format::Strptime
+	# can return 'No input string', so we use it as well.
+
+	if (length($candidate) == 0)
+	{
+		return 'No input string';
+	}
+
 	my($date) = $self -> parse_datetime_1($candidate);
 
 	if ($date eq 'Could not parse date')
