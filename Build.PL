@@ -20,6 +20,7 @@ Module::Build -> new
 	 DateTime::Format::W3CDTF    => 0.06,
 	 HTML::Entities::Interpolate => 1.03,
 	 HTML::Template              => 2.9,
+	 Perl6::Slurp                => 0.03,
 	 version                     => 0.82,
  },
 ) -> create_build_script();

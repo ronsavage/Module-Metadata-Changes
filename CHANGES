@@ -1,5 +1,8 @@
 Revision history for Perl extension Manage::Module::Changes.
 
+2.02  Tue Feb 22  9:07:00 2011
+	- Add missing dependency Perl6::Slurp to Build.PL and Makefile.PL. Re-generate metatdata files.
+
 2.01  Mon Feb 21 18:30:00 2011
 	- Allow for a line in CHANGES to contain just 1 long token, without outputting a warning under recent Perls.
 
