@@ -16,7 +16,7 @@ name: Module-Metadata-Changes
 provides:
   Module::Metadata::Changes:
     file: lib/Module/Metadata/Changes.pm
-    version: 2.00
+    version: 2.01
 requires:
   Config::IniFiles: 2.66
   DateTime: 0.66
@@ -28,4 +28,4 @@ requires:
   version: 0.82
 resources:
   license: http://opensource.org/licenses/artistic-license.php
-version: 2.00
+version: 2.01
