@@ -4,13 +4,13 @@ use feature 'say';
 use strict;
 use warnings;
 
-use File::chdir;
+use File::chdir; # For magic $CWD.
 
 use Module::Metadata::Changes;
 
 # ------------------------------------------------
 
-my($work) = '/home/ron/perl.modules';
+my($work) = "$ENV{HOME}/perl.modules";
 my($m)    = Module::Metadata::Changes -> new;
 
 opendir(INX, $work) || die "Can't opendir($work)";

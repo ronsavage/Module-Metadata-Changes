@@ -666,7 +666,7 @@ With a script like this:
 	use strict;
 	use warnings;
 
-	use File::chdir;
+	use File::chdir; # For magic $CWD.
 
 	use Module::Metadata::Changes;
 
@@ -679,14 +679,16 @@ With a script like this:
 	my(@name) = sort grep{! /^\.\.?$/} readdir INX;
 	closedir INX;
 
+	my($config);
 	my($version);
 
 	for my $name (@name)
 	{
 		$CWD     = "$work/$name"; # Does a chdir.
 		$version = $m -> read -> get_latest_version;
+		$config  = $m -> config; # Must call read() before config().
 
-		say "$name V $version";
+		say $config -> val('Module', 'Name'), " V $version ", $config -> val("V $version", 'Date');
 	}
 
 you can get a report of the latest version number, from Changelog.ini, for each module in your vast library.
