@@ -1,5 +1,8 @@
 Revision history for Perl extension Manage::Module::Changes.
 
+2.01  Mon Feb 21 18:30:00 2011
+	- Allow for a line in CHANGES to contain just 1 long token, without outputting a warning under recent Perls.
+
 2.00  Tue Feb 15 14:59:00 2011
 	- Rewrite to allow client access to the memory-based version of Changelog.ini.
 	- Add scripts/report.names.pl to demonstrate this feature.
@@ -17,7 +20,6 @@ Revision history for Perl extension Manage::Module::Changes.
 	- Replace common::sense with use strict and use warnings, to get uninit var warnings.
 	- Replace Carp::croak with die.
 	- Use real version numbers instead of 0 in the required modules lists in Build.PL and Makefile.PL.
-	- Allow for a line in CHANGES to contain just 1 long token, without outputting a warning under recent Perls.
 
 1.08  Sun Feb 21 12:56:13 2010
 	- Remove text 'All rights reserved' (for Debian licensing).
