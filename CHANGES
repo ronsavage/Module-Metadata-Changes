@@ -1,5 +1,8 @@
 Revision history for Perl extension Manage::Module::Changes.
 
+2.03  Wed Feb 23 17:21:00 2011
+	- Add missing dependency Hash::FieldHash to Build.PL and Makefile.PL. Re-generate metatdata files.
+
 2.02  Tue Feb 22  9:07:00 2011
 	- Add missing dependency Perl6::Slurp to Build.PL and Makefile.PL. Re-generate metatdata files.
 

@@ -29,6 +29,7 @@ WriteMakefile
 	 DateTime::Format::HTTP      => 0.40,
 	 DateTime::Format::Strptime  => 1.5000,
 	 DateTime::Format::W3CDTF    => 0.06,
+	 Hash::FieldHash             => 0.10,
 	 HTML::Entities::Interpolate => 1.03,
 	 HTML::Template              => 2.9,
 	 Perl6::Slurp                => 0.03,
