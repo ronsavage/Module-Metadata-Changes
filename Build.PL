@@ -11,6 +11,10 @@ Module::Build -> new
 	 Test::More => 0.96,
 	 Test::Pod  => 1.41,
  },
+ configure_requires =>
+ {
+ 	 Module::Build => 0.3800,
+ },
  requires =>
  {
 	 Config::IniFiles            => 2.66,
