@@ -4,7 +4,7 @@ Module::Build -> new
 (
  module_name    => 'Module::Metadata::Changes',
  license        => 'artistic',
- dist_abstract  => "Manage a module's CHANGES file",
+ dist_abstract  => "Manage a module's machine-readable CHANGES file",
  dist_author    => 'Ron Savage <ron@savage.net.au>',
  build_requires =>
  {
