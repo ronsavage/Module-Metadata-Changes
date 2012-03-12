@@ -252,17 +252,20 @@ sub reader
 
 	# 2nd guess at format: X::Y somewhere in the first line. This overrides the first guess.
 
-	@field = split(/\s+/, $line);
-
-	my($field);
-
-	for $field (@field)
+	if (! $module_name)
 	{
-		if ($field =~ /^.+::.+$/)
-		{
-			$module_name = $field;
+		@field = split(/\s+/, $line);
 
-			last;
+		my($field);
+
+		for $field (@field)
+		{
+			if ($field =~ /^.+::.+$/)
+			{
+				$module_name = $field;
+
+				last;
+			}
 		}
 	}
 
@@ -572,7 +575,7 @@ sub validate
 		# Validate Date within each Release.
 
 		$candidate = $self -> config -> val($release, 'Date');
-		
+
 		try
 		{
 			$date = $parser -> parse_datetime($candidate);
@@ -926,7 +929,7 @@ Return value: 0.
 
 =head2 o transform(@line)
 
-Transform the memory-based version of CHANGES into an arrayref of hashrefs, where each array element 
+Transform the memory-based version of CHANGES into an arrayref of hashrefs, where each array element
 holds data for 1 version.
 
 Must be called by C<reader()>.
