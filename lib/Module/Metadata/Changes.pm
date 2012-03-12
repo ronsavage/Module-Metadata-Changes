@@ -249,10 +249,11 @@ sub reader
 	$line            =~ s/\s*\.\s*$//;
 	my(@field)       = split(/\s+/, $line);
 	my($module_name) = $field[$#field];
+	my($ok)          = $module_name ? 1 : 0;
 
 	# 2nd guess at format: X::Y somewhere in the first line. This overrides the first guess.
 
-	if (! $module_name)
+	if (! $ok)
 	{
 		@field = split(/\s+/, $line);
 
