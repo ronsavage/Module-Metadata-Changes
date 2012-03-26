@@ -1,5 +1,5 @@
 {
-   "abstract" : "Manage a module's CHANGES file",
+   "abstract" : "Manage a module's machine-readable CHANGES file",
    "author" : [
       "Ron Savage <ron@savage.net.au>"
    ],
@@ -22,7 +22,7 @@
       },
       "configure" : {
          "requires" : {
-            "Module::Build" : "0.36"
+            "Module::Build" : "0.38"
          }
       },
       "runtime" : {
@@ -43,7 +43,7 @@
    "provides" : {
       "Module::Metadata::Changes" : {
          "file" : "lib/Module/Metadata/Changes.pm",
-         "version" : "2.03"
+         "version" : "2.04"
       }
    },
    "release_status" : "stable",
@@ -52,5 +52,5 @@
          "http://opensource.org/licenses/artistic-license.php"
       ]
    },
-   "version" : "2.03"
+   "version" : "2.04"
 }
