@@ -32,7 +32,7 @@ fieldhash my %urlForCSS   => 'urlForCSS';
 fieldhash my %verbose     => 'verbose';
 fieldhash my %webpage     => 'webPage';
 
-our $VERSION = '2.03';
+our $VERSION = '2.04';
 
 # ------------------------------------------------
 
@@ -408,6 +408,7 @@ sub run
 sub transform
 {
 	my($self, @line) = @_;
+	my($count)       = 0;
 
 	my($current_version, $current_date, @comment);
 	my($date);
@@ -418,6 +419,8 @@ sub transform
 
 	for $line (@line)
 	{
+		$count++;
+
 		$line  =~ s/^\s+//;
 		$line  =~ s/\s+$//;
 
@@ -445,15 +448,15 @@ sub transform
 			$version = version -> new("$field[0]");
 		};
 
-		$date = $self -> parse_datetime($field[1]);
+		$date = defined $field[1] ? $self -> parse_datetime($field[1]) : 'No input string';
 
 		if ( ($version eq '0') || ($date eq 'Could not parse date') || ($date =~ /No input string/) )
 		{
 			# We got an error. So assume it's commentary on the current release.
-			# If the line starts with EOT, jam a '-' in front of it to eascape it,
+			# If the line starts with EOT, jam a '-' in front of it to escape it,
 			# since Config::IniFiles uses EOT to terminate multi-line comments.
 
-			$line = ".$line" if (substr($line, 0, 3) eq 'EOT');
+			$line = "-$line" if (substr($line, 0, 3) eq 'EOT');
 
 			push @comment, $line;
 		}
