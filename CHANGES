@@ -1,5 +1,8 @@
 Revision history for Perl extension Manage::Module::Changes.
 
+2.05  Fri Nov 16 15:16:00 2012
+	- Allow for version #s which start with 'v'.
+
 2.04  Mon Mar 26 11:31:00 2012
 	- Stop uninit warning when a line being tested for a datetime contains just 1 field.
 	- Output a '-' as documented, rather than a '.', at the start of any line which happens to start with

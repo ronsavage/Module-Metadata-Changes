@@ -32,7 +32,7 @@ fieldhash my %urlForCSS   => 'urlForCSS';
 fieldhash my %verbose     => 'verbose';
 fieldhash my %webpage     => 'webPage';
 
-our $VERSION = '2.04';
+our $VERSION = '2.05';
 
 # ------------------------------------------------
 
@@ -438,7 +438,7 @@ sub transform
 
 		# Remove commas (from dates) if the line starts with a digit (which is assumed to be a version #).
 
-		$line  =~ s/,//g if ($line =~ /^\d/);
+		$line  =~ s/,//g if ($line =~ /^v?\d/);
 		@field = split(/\s(?:-\s)?/, $line, 2);
 
 		# The "" keeps version happy.
