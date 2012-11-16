@@ -3,7 +3,7 @@ Revision history for Perl extension Manage::Module::Changes.
 2.04  Mon Mar 26 11:31:00 2012
 	- Stop uninit warning when a line being tested for a datetime contains just 1 field.
 	- Output a '-' as documented, rather than a '.', at the start of any line which happens to start with
-		Config::IniFiles' reserved token EOT.
+		Config::IniFiles' reserved token \E\O\T.
 	- Add META.json to MANIFEST.
 
 2.03  Wed Feb 23 17:21:00 2011
