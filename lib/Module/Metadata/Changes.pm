@@ -32,7 +32,7 @@ fieldhash my %urlForCSS   => 'urlForCSS';
 fieldhash my %verbose     => 'verbose';
 fieldhash my %webpage     => 'webPage';
 
-our $VERSION = '2.05';
+our $VERSION = '2.04';
 
 # ------------------------------------------------
 
