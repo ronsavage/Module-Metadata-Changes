@@ -43,7 +43,7 @@
    "provides" : {
       "Module::Metadata::Changes" : {
          "file" : "lib/Module/Metadata/Changes.pm",
-         "version" : "2.05"
+         "version" : "2.04"
       }
    },
    "release_status" : "stable",
@@ -52,5 +52,5 @@
          "http://www.perlfoundation.org/artistic_license_1_0"
       ]
    },
-   "version" : "2.05"
+   "version" : "2.04"
 }
