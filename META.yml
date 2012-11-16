@@ -17,7 +17,7 @@ name: Module-Metadata-Changes
 provides:
   Module::Metadata::Changes:
     file: lib/Module/Metadata/Changes.pm
-    version: 2.05
+    version: 2.04
 requires:
   Config::IniFiles: 2.66
   DateTime: 0.66
@@ -31,4 +31,4 @@ requires:
   version: 0.82
 resources:
   license: http://www.perlfoundation.org/artistic_license_1_0
-version: 2.05
+version: 2.04
