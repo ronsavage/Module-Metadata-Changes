@@ -21,6 +21,7 @@ WriteMakefile
 },
  DISTNAME  => 'Module-Metadata-Changes',
  NAME      => 'Module::Metadata::Changes',
+	LICENSE   => 'perl_5',
  PL_FILES  => {},
  PREREQ_PM =>
  {
