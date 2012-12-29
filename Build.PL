@@ -3,7 +3,7 @@ use Module::Build;
 Module::Build -> new
 (
  module_name    => 'Module::Metadata::Changes',
- license        => 'perl_5',
+ license        => 'artistic_2',
  dist_abstract  => "Manage a module's machine-readable CHANGES file",
  dist_author    => 'Ron Savage <ron@savage.net.au>',
  build_requires =>
