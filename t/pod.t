@@ -1,4 +1,4 @@
-use Test::More;
+use Test::Simple;
 
 eval "use Test::Pod 1.00";
 
