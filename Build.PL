@@ -9,7 +9,7 @@ Module::Build -> new
  build_requires =>
  {
 	 Test::Simple=> 0.96,
-	 Test::Pod  => 1.41,
+	 Test::Pod  => 1.45,
  },
  configure_requires =>
  {
