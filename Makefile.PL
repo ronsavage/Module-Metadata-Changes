@@ -34,7 +34,7 @@ WriteMakefile
 	 HTML::Entities::Interpolate => 1.03,
 	 HTML::Template              => 2.9,
 	 Perl6::Slurp                => 0.03,
-	 Test::Simple                => 0.96,
+	 Test::More                => 0.96,
 	 Test::Pod                   => 1.45,
 	 version                     => 0.82,
  },
