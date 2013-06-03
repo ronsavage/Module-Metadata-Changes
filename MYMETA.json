@@ -39,12 +39,6 @@
          }
       }
    },
-   "provides" : {
-      "Module::Metadata::Changes" : {
-         "file" : "lib/Module/Metadata/Changes.pm",
-         "version" : "2.05"
-      }
-   },
    "release_status" : "stable",
    "resources" : {
       "license" : [

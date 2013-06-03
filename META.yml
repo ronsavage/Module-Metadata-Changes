@@ -13,6 +13,10 @@ meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: Module-Metadata-Changes
+provides:
+  Module::Metadata::Changes:
+    file: lib/Module/Metadata/Changes.pm
+    version: 2.05
 requires:
   Config::IniFiles: 2.66
   DateTime: 0.66
