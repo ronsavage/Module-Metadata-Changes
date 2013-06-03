@@ -2,6 +2,7 @@ bin/ini.report.pl
 Build.PL
 Changelog.ini
 CHANGES
+Changes
 htdocs/assets/css/module/metadata/changes/ini.css
 htdocs/assets/templates/module/metadata/changes/ini.page.tmpl
 htdocs/assets/templates/module/metadata/changes/ini.table.tmpl
@@ -17,5 +18,10 @@ t/01.load.t
 t/02.convert.t
 t/Changelog.ini
 t/CHANGES
+t/Changes
 t/CHANGES.yml
+t/Changes.yml
+t/convert.t
+t/load.t
 t/Non.standard.name
+t/pod.t
