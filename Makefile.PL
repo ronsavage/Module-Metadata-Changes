@@ -8,7 +8,7 @@ WriteMakefile
  ($] ge '5.005') ?
  (
   AUTHOR   => 'Ron Savage (ron@savage.net.au)',
-  ABSTRACT => "Manage a module's machine-readable CHANGES file",
+  ABSTRACT => "Manage a module's machine-readable Changes/CHANGES file",
  ) : (),
  clean =>
  {

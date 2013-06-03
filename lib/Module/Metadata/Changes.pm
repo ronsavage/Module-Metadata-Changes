@@ -32,7 +32,7 @@ fieldhash my %urlForCSS   => 'urlForCSS';
 fieldhash my %verbose     => 'verbose';
 fieldhash my %webpage     => 'webPage';
 
-our $VERSION = '2.04';
+our $VERSION = '2.05';
 
 # ------------------------------------------------
 
@@ -103,9 +103,9 @@ sub init
 	my($self, $arg)    = @_;
 	$$arg{convert}     ||= 0;
 	$$arg{errstr}      = '';
-	$$arg{inFileName}  ||= '';
+	$$arg{inFileName}  ||= 'Changes';
 	$$arg{outFileName} ||= 'Changelog.ini';
-	$$arg{pathForHTML} ||= '/var/www/assets/templates/module/metadata/changes';
+	$$arg{pathForHTML} ||= '/dev/shm/html/assets/templates/module/metadata/changes';
 	$$arg{release}     ||= '';
 	$$arg{table}       ||= 0;
 	$$arg{urlForCSS}   ||= '/assets/css/module/metadata/changes/ini.css';
@@ -236,7 +236,7 @@ sub read
 sub reader
 {
 	my($self, $in_file_name) = @_;
-	$in_file_name            ||= $self -> inFileName || 'CHANGES';
+	$in_file_name            ||= $self -> inFileName || (-e 'Changes' ? 'Changes' : 'CHANGES');
 	my(@line)                = slurp $in_file_name, {chomp => 1};
 
 	$self -> log("Input file: $in_file_name");
@@ -382,7 +382,7 @@ sub run
 {
 	my($self) = @_;
 
-	# If converting, inFileName is the name of an old-style CHANGES file,
+	# If converting, inFileName is the name of an old-style Changes/CHANGES file,
 	# and outFileName is the name of a new-style Changelog.ini file.
 	# If reporting on a specific release, inFileName is the name of
 	# a new-style Changelog.ini file.
@@ -649,13 +649,13 @@ sub writer
 
 =head1 NAME
 
-Module::Metadata::Changes - Manage a module's machine-readable CHANGES file
+Module::Metadata::Changes - Manage a module's machine-readable Changes/CHANGES file
 
 =head1 Synopsis
 
 =head2 One-liners
 
-These examples use CHANGES and Changelog.ini in the 'current' directory.
+These examples use Changes/CHANGES and Changelog.ini in the 'current' directory.
 
 The command line options (except for -h) correspond to the options documented under L</Constructor and initialization>, below.
 
@@ -713,7 +713,7 @@ you can get a report of the latest version number, from Changelog.ini, for each 
 
 L<Module::Metadata::Changes> is a pure Perl module.
 
-It allows you to convert old-style CHANGES files, and to read and write Changelog.ini files.
+It allows you to convert old-style Changes/CHANGES files, and to read and write Changelog.ini files.
 
 =head1 Distributions
 
@@ -752,7 +752,8 @@ If the value is 1, calling C<run()> calls C<writer(reader() )>.
 
 =item o inFileName
 
-The default is 'CHANGES' when calling C<reader()>, and 'Changelog.ini' when calling C<read()>.
+The default is 'Changes' (or, if absent, 'CHANGES') when calling C<reader()>, and
+'Changelog.ini' when calling C<read()>.
 
 =item o outFileName
 
@@ -762,7 +763,7 @@ The default is 'Changelog.ini'.
 
 This is path to the HTML::Template-style templates used by the 'table' and 'webPage' options.
 
-The default is '/var/www/assets/templates/module/metadata/changes'.
+The default is '/dev/shm/html/assets/templates/module/metadata/changes'.
 
 =item o release
 
@@ -879,9 +880,9 @@ Return value: The object, for method chaining.
 
 =head2 o reader([$input_file_name])
 
-This method parses the given file, assuming it's format is the common-or-garden CHANGES style.
+This method parses the given file, assuming it is format is the common-or-garden Changes/CHANGES style.
 
-The $input_file_name is optional. It defaults to 'CHANGES'.
+The $input_file_name is optional. It defaults to 'Changes' (or, if absent, 'CHANGES').
 
 C<reader()> calls C<module_name()> to save the module's name for use by other methods.
 
@@ -933,12 +934,12 @@ Return value: 0.
 
 =head2 o transform(@line)
 
-Transform the memory-based version of CHANGES into an arrayref of hashrefs, where each array element
+Transform the memory-based version of Changes/CHANGES into an arrayref of hashrefs, where each array element
 holds data for 1 version.
 
 Must be called by C<reader()>.
 
-The array is the text read in from CHANGES.
+The array is the text read in from Changes/CHANGES.
 
 C<transform()> stores the arrayref of hashrefs in $obj -> changes(), for use by C<writer()>.
 
@@ -976,12 +977,12 @@ Return value: The object, for method chaining.
 
 =item o Invalid dates
 
-Invalid dates in CHANGES cannot be distinguished from comments. That means that if the output file is
+Invalid dates in Changes/CHANGES cannot be distinguished from comments. That means that if the output file is
 missing one or more versions, it's because of those invalid dates.
 
 =item o Invalid day-of-week (dow)
 
-If CHANGES includes the dow, it is not cross-checked with the date, so if the dow is wrong,
+If Changes/CHANGES includes the dow, it is not cross-checked with the date, so if the dow is wrong,
 you will not get an error generated.
 
 =back
@@ -1141,7 +1142,7 @@ They will then live on as part of the file.
 
 =back
 
-Special processing is normally only relevant when converting an old-style CHANGES file
+Special processing is normally only relevant when converting an old-style Changes/CHANGES file
 to a new-style Changelog.ini file.
 
 However, if you think the new tokens are important enough to be displayed as part of the text
@@ -1249,7 +1250,7 @@ text containing English semi-colons.
 Also, authors add comments per release, and most C<Config::*> modules only handle lines
 of the type X=Y.
 
-=item o How are the old CHANGES files parsed?
+=item o How are the old Changes/CHANGES files parsed?
 
 The first line is scanned looking for /X::Y/ or /X\.$/. And yes, it fails for modules
 which identify themselves like Fuse-PDF not at the end of the line.
@@ -1277,7 +1278,7 @@ For example, version numbers like '3.x' are turned into '3.'.
 
 You'll simply have to scrutinize (which means 'read I<carefully>') the output of this conversion process.
 
-If a CHANGES file is not handled by the current version, log a bug report on Request Tracker:
+If a Changes/CHANGES file is not handled by the current version, log a bug report on Request Tracker:
 http://rt.cpan.org/Public/
 
 =item o How are datetimes in old-style files parsed?
@@ -1301,7 +1302,7 @@ Other date parsing modules are L<Date::Manip>, L<Date::Parse> and L<Regexp::Comm
 
 =item o Why did you choose these 2 modules?
 
-I had a look at a few CHANGES files, and these made sense.
+I had a look at a few Changes/CHANGES files, and these made sense.
 
 If appropriate, other modules can be added to the algorithm.
 
@@ -1333,7 +1334,7 @@ It's too complex for this tiny project.
 
 Log a bug report on Request Tracker: http://rt.cpan.org/Public/
 
-If it concerns failure to convert a specific CHANGES file, just provide the name of
+If it concerns failure to convert a specific Changes/CHANGES file, just provide the name of
 the module and the version number.
 
 It would help - if the problem is failure to parse a specific datetime format - if you could
