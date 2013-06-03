@@ -1,7 +1,6 @@
 bin/ini.report.pl
 Build.PL
 Changelog.ini
-CHANGES
 Changes
 htdocs/assets/css/module/metadata/changes/ini.css
 htdocs/assets/templates/module/metadata/changes/ini.page.tmpl
@@ -13,13 +12,8 @@ META.json
 META.yml
 README
 scripts/report.names.pl
-t/00.pod.t
-t/01.load.t
-t/02.convert.t
 t/Changelog.ini
-t/CHANGES
 t/Changes
-t/CHANGES.yml
 t/Changes.yml
 t/convert.t
 t/load.t
