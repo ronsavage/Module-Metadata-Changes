@@ -103,7 +103,7 @@ sub init
 	my($self, $arg)    = @_;
 	$$arg{convert}     ||= 0;
 	$$arg{errstr}      = '';
-	$$arg{inFileName}  ||= 'Changes';
+	$$arg{inFileName}  ||= '';
 	$$arg{outFileName} ||= 'Changelog.ini';
 	$$arg{pathForHTML} ||= '/dev/shm/html/assets/templates/module/metadata/changes';
 	$$arg{release}     ||= '';

@@ -1,7 +1,8 @@
 Revision history for Perl extension Manage::Module::Changes.
 
 2.05  Mon Jun  3 12:14:00 2013
-	- Change default inFileName from '' to Changes but allow CHANGES as the alternative.
+	- Rename CHANGES to Changes as per CPAN::Changes::Spec.
+	- Allow inFileName to be Changes or CHANGES.
 	- Change default PathForHTML from '/var/www/assets/templates/module/metadata/changes' to
 		'/dev/shm/html/assets/templates/module/metadata/changes'.
 	- Rename test files from \d\d.*.t to *.t.
