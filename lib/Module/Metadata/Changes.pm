@@ -103,7 +103,7 @@ sub init
 	my($self, $arg)    = @_;
 	$$arg{convert}     ||= 0;
 	$$arg{errstr}      = '';
-	$$arg{inFileName}  ||= '';
+	$$arg{inFileName}  ||= ''; # See also run().
 	$$arg{outFileName} ||= 'Changelog.ini';
 	$$arg{pathForHTML} ||= '/dev/shm/html/assets/templates/module/metadata/changes';
 	$$arg{release}     ||= '';
@@ -389,10 +389,12 @@ sub run
 
 	if ($self -> convert)
 	{
+		$self -> inFileName('Changes') if (! $self -> inFileName);
 		$self -> reader($self -> inFileName) -> writer($self -> outFileName);
 	}
 	else
 	{
+		$self -> inFileName('Changelog.ini') if (! $self -> inFileName);
 		$self -> read($self -> inFileName);
 		$self -> report;
 	}

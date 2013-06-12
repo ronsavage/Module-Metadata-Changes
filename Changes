@@ -6,6 +6,7 @@ Revision history for Perl extension Manage::Module::Changes.
 	- Change default PathForHTML from '/var/www/assets/templates/module/metadata/changes' to
 		'/dev/shm/html/assets/templates/module/metadata/changes'.
 	- Rename test files from \d\d.*.t to *.t.
+	- Update the help printed by init.report.pl -h.
 
 2.04  Mon Mar 26 11:31:00 2012
 	- Stop uninit warning when a line being tested for a datetime contains just 1 field.
