@@ -651,7 +651,7 @@ sub writer
 
 =head1 NAME
 
-Module::Metadata::Changes - Manage a module's machine-readable Changes/CHANGES file
+Module::Metadata::Changes - Manage a machine-readable Changes/CHANGES file
 
 =head1 Synopsis
 
