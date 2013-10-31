@@ -1346,6 +1346,8 @@ advise me on a suitable C<DateTime::Format::*> module to use.
 
 =head1 See also
 
+L<App::ParseCPANChanges>.
+
 L<Module::Changes>: http://search.cpan.org/dist/Module-Changes-0.05/
 
 =head1 Author
