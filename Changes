@@ -1,5 +1,8 @@
 Revision history for Perl extension Manage::Module::Changes.
 
+2.06  Unreleased
+	- Add a link to CPAN::Changes in 'See also'.
+
 2.05  Mon Jun  3 12:14:00 2013
 	- Rename CHANGES to Changes as per CPAN::Changes::Spec.
 	- Allow inFileName to be Changes or CHANGES.
