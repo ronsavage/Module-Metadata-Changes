@@ -1,44 +1,46 @@
 use ExtUtils::MakeMaker;
 
+# ----------------
+
 # See lib/ExtUtils/MakeMaker.pm for details of how to influence
 # the contents of the Makefile that is written.
 
 WriteMakefile
 (
- ($] ge '5.005') ?
- (
-  AUTHOR   => 'Ron Savage (ron@savage.net.au)',
-  ABSTRACT => "Manage a module's machine-readable Changes/CHANGES file",
- ) : (),
- clean =>
- {
-	 FILES => 'blib/* Makefile MANIFEST Module-Metadata-Changes-*'
- },
- dist =>
- {
-	 COMPRESS => 'gzip',
-	 SUFFIX   => 'gz'
+	($] ge '5.005') ?
+	(
+		AUTHOR   => 'Ron Savage (ron@savage.net.au)',
+		ABSTRACT => "Manage a module's machine-readable Changes/CHANGES file",
+	) : (),
+	clean =>
+	{
+		FILES => 'blib/* Makefile MANIFEST Module-Metadata-Changes-*'
+	},
+	dist =>
+	{
+		COMPRESS => 'gzip',
+		SUFFIX   => 'gz'
 },
- DISTNAME  => 'Module-Metadata-Changes',
- NAME      => 'Module::Metadata::Changes',
+	DISTNAME  => 'Module-Metadata-Changes',
+	NAME      => 'Module::Metadata::Changes',
 	LICENSE   => 'artistic_2',
- PL_FILES  => {},
- PREREQ_PM =>
- {
-	 Config::IniFiles            => 2.66,
-	 DateTime                    => 0.66,
-	 DateTime::Format::HTTP      => 0.40,
-	 DateTime::Format::Strptime  => 1.5000,
-	 DateTime::Format::W3CDTF    => 0.06,
-	 Hash::FieldHash             => 0.10,
-	 HTML::Entities::Interpolate => 1.03,
-	 HTML::Template              => 2.9,
-	 Perl6::Slurp                => 0.03,
-	 Test::More                => 0.96,
-#	 Test::Pod                   => 1.45, # Make it optional. See t/pod.t
-	 version                     => 0.82,
- },
- VERSION_FROM => 'lib/Module/Metadata/Changes.pm',
+	PL_FILES  => {},
+	PREREQ_PM =>
+	{
+		'Config::IniFiles' => 2.66,
+		'DateTime' => 0.66,
+		'DateTime::Format::HTTP' => 0.40,
+		'DateTime::Format::Strptime' => 1.5000,
+		'DateTime::Format::W3CDTF' => 0.06,
+		'Hash::FieldHash' => 0.10,
+		'HTML::Entities::Interpolate' => 1.03,
+		'HTML::Template' => 2.9,
+		'Perl6::Slurp' => 0.03,
+		'Test::More' => 1.001014,
+		'Test::Pod' => 1.48,
+		'version' => 0.82,
+	},
+	VERSION_FROM => 'lib/Module/Metadata/Changes.pm',
 );
 
 print "\a\n";
