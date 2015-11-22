@@ -36,7 +36,7 @@ WriteMakefile
 		'HTML::Entities::Interpolate' => 1.06,
 		'HTML::Template' => 2.95,
 		'Moo' => 2.000002,
-		'Test::Stream' => 2.03,
+		'Test::Stream' => 1.302026,
 		'Test::Pod' => 1.48,
 		'Type::Tiny' => 1.000005,
 		'version' => 0,
