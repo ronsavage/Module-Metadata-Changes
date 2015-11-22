@@ -1,4 +1,4 @@
-use Test::Stream
+use Test::Stream -V1;
 
 BEGIN {chdir 't' if -d 't'}
 use lib '../lib';

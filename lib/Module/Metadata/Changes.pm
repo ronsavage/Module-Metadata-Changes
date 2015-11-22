@@ -520,7 +520,7 @@ sub transform
 
 		$date = defined $field[1] ? $self -> parse_datetime($field[1]) : 'No input string';
 
-		if ( ($version eq '0') || ($date eq 'Could not parse date') || ($date =~ /No input string/) )
+		if (! defined $version || ($version eq '0') || ($date eq 'Could not parse date') || ($date =~ /No input string/) )
 		{
 			# We got an error. So assume it's commentary on the current release.
 			# If the line starts with EOT, jam a '-' in front of it to escape it,
