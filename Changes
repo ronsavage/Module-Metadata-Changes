@@ -1,6 +1,6 @@
 Revision history for Perl extension Manage::Module::Changes.
 
-2.06  Unreleased
+2.06  Sun Nov 22 11:32:00 2015
 	- Add a link to CPAN::Changes in 'See also'.
 	- Switch from Perl6::Slurp to File::Slurper.
 	- Switch from Hash::FieldHash to Moo and Types::Standard.
