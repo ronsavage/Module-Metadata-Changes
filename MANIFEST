@@ -15,6 +15,5 @@ t/Changelog.ini
 t/Changes
 t/Changes.yml
 t/convert.t
-t/load.t
 t/Non.standard.name
 t/pod.t
