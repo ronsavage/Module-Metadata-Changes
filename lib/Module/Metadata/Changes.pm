@@ -305,7 +305,7 @@ sub reader
 {
 	my($self, $in_file_name) = @_;
 	$in_file_name            ||= $self -> inFileName || (-e 'Changes' ? 'Changes' : 'CHANGES');
-	my(@line)                = slurp $in_file_name, {chomp => 1};
+	my(@line)                = read_lines $in_file_name;
 
 	$self -> log("Input file: $in_file_name");
 
