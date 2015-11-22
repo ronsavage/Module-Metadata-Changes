@@ -116,7 +116,7 @@ has verbose =>
 	required => 0,
 );
 
-has webpage =>
+has webPage =>
 (
 	default  => sub{return 0},
 	is       => 'rw',
