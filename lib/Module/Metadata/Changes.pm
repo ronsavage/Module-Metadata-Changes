@@ -16,7 +16,7 @@ use Try::Tiny;
 
 use Types::Standard qw/Any ArrayRef Bool Str/;
 
-use version;
+use version 0.9912;
 
 has changes =>
 (
