@@ -16,21 +16,21 @@ use Try::Tiny;
 
 use Types::Standard qw/Any ArrayRef Bool Str/;
 
-#use version 0.77;
-
-has xchanges =>
-(
-	default  => sub{return []},
-	is       => 'rw',
-	isa      => ArrayRef,
-	required => 0,
-);
+use version;
 
 has config =>
 (
 	default  => sub{return ''},
 	is       => 'rw',
 	isa      => Any,
+	required => 0,
+);
+
+has changes =>
+(
+	default  => sub{return []},
+	is       => 'rw',
+	isa      => ArrayRef,
 	required => 0,
 );
 
@@ -594,7 +594,7 @@ sub transform
 		}
 	}
 
-	$self -> xchanges([@release]);
+	$self -> changes([@release]);
 
 	# Return object for method chaining.
 
@@ -683,7 +683,7 @@ sub writer
 
 	my($section);
 
-	for my $r (reverse sort{$$a{'Version'} cmp $$b{'Version'} } @{$self -> xchanges})
+	for my $r (reverse sort{$$a{'Version'} cmp $$b{'Version'} } @{$self -> changes})
 	{
 		$section = "V $$r{'Version'}";
 
