@@ -1,13 +1,14 @@
 Revision history for Perl extension Manage::Module::Changes.
 
-2.06  Sun Nov 22 11:32:00 2015
+2.06  2015-11-22T11:32:00
 	- Add a link to CPAN::Changes in 'See also'.
 	- Switch from Perl6::Slurp to File::Slurper.
 	- Switch from Hash::FieldHash to Moo and Types::Standard.
 	- Remove Build.PL.
 	- Update pre-reqs.
+	- Reformat dates in this file.
 
-2.05  Mon Jun  3 12:14:00 2013
+2.05  2013-06-03T12:14:00
 	- Rename CHANGES to Changes as per CPAN::Changes::Spec.
 	- Allow inFileName to be Changes or CHANGES.
 	- Change default PathForHTML from '/var/www/assets/templates/module/metadata/changes' to
@@ -15,22 +16,22 @@ Revision history for Perl extension Manage::Module::Changes.
 	- Rename test files from \d\d.*.t to *.t.
 	- Update the help printed by init.report.pl -h.
 
-2.04  Mon Mar 26 11:31:00 2012
+2.04  2012-03-26T11:31:00
 	- Stop uninit warning when a line being tested for a datetime contains just 1 field.
 	- Output a '-' as documented, rather than a '.', at the start of any line which happens to start with
 		Config::IniFiles' reserved token \E\O\T.
 	- Add META.json to MANIFEST.
 
-2.03  Wed Feb 23 17:21:00 2011
+2.03  2011-02-23T17:21:00
 	- Add missing dependency Hash::FieldHash to Build.PL and Makefile.PL. Re-generate metatdata files.
 
 2.02  Tue Feb 22  9:07:00 2011
 	- Add missing dependency Perl6::Slurp to Build.PL and Makefile.PL. Re-generate metatdata files.
 
-2.01  Mon Feb 21 18:30:00 2011
+2.01  2011-02-21T18:30:00
 	- Allow for a line in CHANGES to contain just 1 long token, without outputting a warning under recent Perls.
 
-2.00  Tue Feb 15 14:59:00 2011
+2.00  2011-02-15T14:59:00
 	- Rewrite to allow client access to the memory-based version of Changelog.ini.
 	- Add scripts/report.names.pl to demonstrate this feature.
 	- new() now takes a hash, not a hashref, since I've adopted the fabulous Hash::FieldHash.
@@ -48,36 +49,36 @@ Revision history for Perl extension Manage::Module::Changes.
 	- Replace Carp::croak with die.
 	- Use real version numbers instead of 0 in the required modules lists in Build.PL and Makefile.PL.
 
-1.08  Sun Feb 21 12:56:13 2010
+1.08  2010-02-21T12:56:13
 	- Remove text 'All rights reserved' (for Debian licensing).
 	- Remove POD heads 'Required Modules' and 'Changes'.
 
-1.07  Wed Feb 10 13:53:00 2010
+1.07  2010-02-10T13:53:00
 	- Add META.yml. Update MANIFEST.SKIP. Add MANIFEST and MYMETA.yml.
 
-1.06  Thu Nov 12 10:19:00 2009
+1.06  2009-11-12T10:19:00
 	  - Run dos2unix on all files.
 
-1.05  Thu Jul  8 10:08:00 2009
+1.05  2009-07-08T10:08:00
 	  - Rename t/Changes to t/Non.standard.name because under MS Windows there is no difference
 	  	between the name t/Changes and the other test file t/CHANGES
 	  - Patch t/02.convert.t to match
 	  - Use File::HomeDir rather than relying on $ENV{'HOME'}
 
-1.04  Wed Feb 18 11:46:00 2009
+1.04  2009-02-18T11:46:00
 	  - Output 'Changelog.*' rather than 'Configlog.*' in the [Module] section of Changelog.ini
 	  - Rename Changes.txt to CHANGES because search.cpan.org won't display Changes.txt
 	  - Rename t/*_*.t to t/*.*.t (since I prefer '.' to '_' in file names, because '_' is a shift char)
 
-1.03  Tue Jul 22 14:41:00 2008
+1.03  2008-07-22T14:41:00
 	  - Rename CHANGES to Changes.txt to match my other modules
 
-1.02  Wed Jul 16 17:14:00 2008
+1.02  2008-07-16T17:14:00
 	  - Patch Build.PL and Makefile.PL to depend on DateTime V 0.42 because a user (thanx Mark)
 	  	has reported a failed test with an earlier version
 
-1.01  Fri May 16 09:12:00 2008
+1.01  2008-05-16T09:12:00
 	  - Add Config::IniFiles to Build.PL and Makefile.PL
 
-1.00  Fri May 02 15:15:45 2008
+1.00  2008-05-02T15:15:45
 	  - Original version
