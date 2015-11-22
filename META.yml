@@ -1,0 +1,35 @@
+---
+abstract: "Manage a module's machine-readable Changes/CHANGES file"
+author:
+  - 'Ron Savage (ron@savage.net.au)'
+build_requires:
+  ExtUtils::MakeMaker: '0'
+configure_requires:
+  ExtUtils::MakeMaker: '0'
+dynamic_config: 1
+generated_by: 'ExtUtils::MakeMaker version 7.06, CPAN::Meta::Converter version 2.143240'
+license: artistic_2
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: '1.4'
+name: Module-Metadata-Changes
+no_index:
+  directory:
+    - t
+    - inc
+requires:
+  Config::IniFiles: '2.88'
+  DateTime: '0.66'
+  DateTime::Format::HTTP: '0.42'
+  DateTime::Format::Strptime: '1.61'
+  DateTime::Format::W3CDTF: '0.06'
+  File::Slurper: '0.008'
+  HTML::Entities::Interpolate: '1.06'
+  HTML::Template: '2.95'
+  Moo: '2.000002'
+  Test::More: '1.001014'
+  Test::Pod: '1.48'
+  Type::Tiny: '1.000005'
+  version: '0'
+version: '2.06'
+
