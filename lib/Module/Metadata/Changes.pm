@@ -7,9 +7,7 @@ use Config::IniFiles;
 
 use DateTime::Format::W3CDTF;
 
-use File::Slurper 'read_lines'.
-
-use Hash::FieldHash ':all';
+use File::Slurper 'read_lines';
 
 use HTML::Entities::Interpolate;
 use HTML::Template;
