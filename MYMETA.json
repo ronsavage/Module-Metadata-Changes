@@ -4,7 +4,7 @@
       "Ron Savage <ron@savage.net.au>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Module::Build version 0.4005, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.143240",
+   "generated_by" : "Module::Build version 0.4211",
    "license" : [
       "artistic_2"
    ],
@@ -16,28 +16,27 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "ExtUtils::MakeMaker" : "0"
+            "Test::More" : 1.001014,
+            "Test::Pod" : 1.48
          }
       },
       "configure" : {
          "requires" : {
-            "ExtUtils::MakeMaker" : "0"
+            "Module::Build" : 0.4211
          }
       },
       "runtime" : {
          "requires" : {
-            "Config::IniFiles" : "2.66",
-            "DateTime" : "0.66",
-            "DateTime::Format::HTTP" : "0.4",
-            "DateTime::Format::Strptime" : "1.5",
-            "DateTime::Format::W3CDTF" : "0.06",
-            "HTML::Entities::Interpolate" : "1.03",
-            "HTML::Template" : "2.9",
-            "Hash::FieldHash" : "0.1",
-            "Perl6::Slurp" : "0.03",
-            "Test::More" : "1.001014",
-            "Test::Pod" : "1.48",
-            "version" : "0.82"
+            "Config::IniFiles" : 2.66,
+            "DateTime" : 0.66,
+            "DateTime::Format::HTTP" : 0.4,
+            "DateTime::Format::Strptime" : 1.5,
+            "DateTime::Format::W3CDTF" : 0.06,
+            "HTML::Entities::Interpolate" : 1.03,
+            "HTML::Template" : 2.9,
+            "Hash::FieldHash" : 0.1,
+            "Perl6::Slurp" : 0.03,
+            "version" : 0.82
          }
       }
    },

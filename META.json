@@ -4,7 +4,7 @@
       "Ron Savage <ron@savage.net.au>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4005, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "Module::Build version 0.4211",
    "license" : [
       "artistic_2"
    ],
@@ -16,12 +16,13 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "Test::More" : "0.96"
+            "Test::More" : "1.001014",
+            "Test::Pod" : "1.48"
          }
       },
       "configure" : {
          "requires" : {
-            "Module::Build" : "0.38"
+            "Module::Build" : "0.4211"
          }
       },
       "runtime" : {
@@ -42,7 +43,7 @@
    "provides" : {
       "Module::Metadata::Changes" : {
          "file" : "lib/Module/Metadata/Changes.pm",
-         "version" : "2.05"
+         "version" : "2.06"
       }
    },
    "release_status" : "stable",
@@ -51,5 +52,5 @@
          "http://www.perlfoundation.org/artistic_license_2_0"
       ]
    },
-   "version" : "2.05"
+   "version" : "2.06"
 }
