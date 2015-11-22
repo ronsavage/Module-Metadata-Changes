@@ -18,7 +18,7 @@ use Types::Standard qw/Any ArrayRef Bool Str/;
 
 #use version 0.77;
 
-has changes =>
+has xchanges =>
 (
 	default  => sub{return []},
 	is       => 'rw',
@@ -594,7 +594,7 @@ sub transform
 		}
 	}
 
-	$self -> changes([@release]);
+	$self -> xchanges([@release]);
 
 	# Return object for method chaining.
 
@@ -683,7 +683,7 @@ sub writer
 
 	my($section);
 
-	for my $r (reverse sort{$$a{'Version'} cmp $$b{'Version'} } @{$self -> changes})
+	for my $r (reverse sort{$$a{'Version'} cmp $$b{'Version'} } @{$self -> xchanges})
 	{
 		$section = "V $$r{'Version'}";
 
