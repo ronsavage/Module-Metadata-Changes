@@ -12,25 +12,27 @@ use File::Slurper 'read_lines';
 use HTML::Entities::Interpolate;
 use HTML::Template;
 
+use Moo;
+
 use Try::Tiny;
 
 use Types::Standard qw/Any ArrayRef Bool Str/;
 
 use version;
 
-has config =>
-(
-	default  => sub{return ''},
-	is       => 'rw',
-	isa      => Any,
-	required => 0,
-);
-
 has changes =>
 (
 	default  => sub{return []},
 	is       => 'rw',
 	isa      => ArrayRef,
+	required => 0,
+);
+
+has config =>
+(
+	default  => sub{return ''},
+	is       => 'rw',
+	isa      => Any,
 	required => 0,
 );
 
