@@ -15,9 +15,9 @@ is(-e './Non.standard.name', 1, './Non.standard.name file exists before conversi
 # Override the default file name to be converted: Changes.
 # Convert ./Non.standard.name to ./Changelog.ini.
 
-my($result) = $config -> convert('./Non.standard.name');
+my($result) = $config -> inFileName('./Non.standard.name');
 
-isa_ok($result, 'Module::Metadata::Changes', 'Result of convert()');
+isa_ok($result, 'Module::Metadata::Changes', 'Result of inFileName()');
 is(-e './Changelog.ini', 1, './Changelog.ini exists after conversion');
 
 # Read ./Changelog.ini back in.
