@@ -7,32 +7,137 @@ use Config::IniFiles;
 
 use DateTime::Format::W3CDTF;
 
+use File::Slurper 'read_lines'.
+
 use Hash::FieldHash ':all';
 
 use HTML::Entities::Interpolate;
 use HTML::Template;
 
-use Perl6::Slurp; # For slurp.
-
 use Try::Tiny;
+
+use Types::Standard qw/Any ArrayRef Bool Str/;
 
 use version;
 
-fieldhash my %changes     => 'changes';
-fieldhash my %config      => 'config';
-fieldhash my %convert     => 'convert';
-fieldhash my %errstr      => 'errstr';
-fieldhash my %inFileName  => 'inFileName';
-fieldhash my %module_name => 'module_name';
-fieldhash my %outFileName => 'outFileName';
-fieldhash my %pathForHTML => 'pathForHTML';
-fieldhash my %release     => 'release';
-fieldhash my %table       => 'table';
-fieldhash my %urlForCSS   => 'urlForCSS';
-fieldhash my %verbose     => 'verbose';
-fieldhash my %webpage     => 'webPage';
+has changes =>
+(
+	default  => sub{return []},
+	is       => 'rw',
+	isa      => ArrayRef,
+	required => 0,
+);
+
+has config =>
+(
+	default  => sub{return ''},
+	is       => 'rw',
+	isa      => Any,
+	required => 0,
+);
+
+has convert =>
+(
+	default  => sub{return 0},
+	is       => 'rw',
+	isa      => Bool,
+	required => 0,
+);
+
+has errstr =>
+(
+	default  => sub{return ''},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
+
+has inFileName =>
+(
+	default  => sub{return ''},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
+
+has module_name =>
+(
+	default  => sub{return ''},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
+
+has outFileName =>
+(
+	default  => sub{return 'Changelog.ini'},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
+
+has pathForHTML =>
+(
+	default  => sub{return '/dev/run/html/assets/templates/module/metadata/changes'},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
+
+has release =>
+(
+	default  => sub{return ''},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
+
+has table =>
+(
+	default  => sub{return 0},
+	is       => 'rw',
+	isa      => Bool,
+	required => 0,
+);
+
+has urlForCSS =>
+(
+	default  => sub{return '/assets/css/module/metadata/changes/ini.css'},
+	is       => 'rw',
+	isa      => Str,
+	required => 0,
+);
+
+has verbose =>
+(
+	default  => sub{return 0},
+	is       => 'rw',
+	isa      => Bool,
+	required => 0,
+);
+
+has webpage =>
+(
+	default  => sub{return 0},
+	is       => 'rw',
+	isa      => Bool,
+	required => 0,
+);
 
 our $VERSION = '2.05';
+
+# -----------------------------------------------
+
+sub BUILD
+{
+	my($self) = @_;
+
+	if ($self -> webPage)
+	{
+		$self -> table(1);
+	}
+
+} # End of BUILD.
 
 # ------------------------------------------------
 
@@ -98,24 +203,6 @@ sub get_latest_version
 
 # -----------------------------------------------
 
-sub init
-{
-	my($self, $arg)    = @_;
-	$$arg{convert}     ||= 0;
-	$$arg{errstr}      = '';
-	$$arg{inFileName}  ||= ''; # See also run().
-	$$arg{outFileName} ||= 'Changelog.ini';
-	$$arg{pathForHTML} ||= '/dev/shm/html/assets/templates/module/metadata/changes';
-	$$arg{release}     ||= '';
-	$$arg{table}       ||= 0;
-	$$arg{urlForCSS}   ||= '/assets/css/module/metadata/changes/ini.css';
-	$$arg{verbose}     ||= 0;
-	$$arg{webPage}     ||= 0;
-
-} # End of init.
-
-# -----------------------------------------------
-
 sub log
 {
 	my($self, $s) = @_;
@@ -127,25 +214,6 @@ sub log
 	}
 
 } # End of log.
-
-# -----------------------------------------------
-
-sub new
-{
-	my($class, %arg) = @_;
-
-	$class -> init(\%arg);
-
-	my($self) = from_hash(bless({}, $class), \%arg);
-
-	if ($self -> webPage)
-	{
-		$self -> table(1);
-	}
-
-	return $self;
-
-} # End of new.
 
 #  -----------------------------------------------
 
@@ -670,7 +738,7 @@ The command line options (except for -h) correspond to the options documented un
 	shell>perl -MModule::Metadata::Changes -e 'print Module::Metadata::Changes->new->read->report'
 	shell>perl -MModule::Metadata::Changes -e 'print Module::Metadata::Changes->new(release=>"2.00")->read->report'
 
-L<Module::Metadata::Changes> ships with C<ini.report.pl> in the bin/ directory. It's installed along with the module.
+L<Module::Metadata::Changes> ships with C<ini.report.pl> in the bin/ directory. It is installed along with the module.
 
 Also, L<Module::Metadata::Changes> uses L<Config::IniFiles> to read and write Changelog.ini files.
 
@@ -730,7 +798,7 @@ help on unpacking and installing.
 
 new(...) returns an object of type L<Module::Metadata::Changes>.
 
-This is the class's contructor.
+This is the class contructor.
 
 Usage: C<< Module::Metadata::Changes -> new() >>.
 
@@ -844,7 +912,7 @@ Returns the last error message, or ''.
 
 =head2 o get_latest_release()
 
-Returns an hash ref of the latest release's data.
+Returns an hash ref of details for the latest release.
 
 Returns {} if there is no such release.
 
@@ -886,7 +954,7 @@ This method parses the given file, assuming it is format is the common-or-garden
 
 The $input_file_name is optional. It defaults to 'Changes' (or, if absent, 'CHANGES').
 
-C<reader()> calls C<module_name()> to save the module's name for use by other methods.
+C<reader()> calls C<module_name()> to save the module name for use by other methods.
 
 C<reader()> calls C<transform()>.
 
@@ -930,7 +998,7 @@ Use the options passed to C<new()> to determine what to do.
 
 Calling C<< new(convert => 1) >> and then C<run()> will cause C<writer(reader() )> to be called.
 
-If you don't set 'convert' to 1 (i.e. use 0 - the default), C<run()> will call C<read()> and C<report()>.
+If you do not set 'convert' to 1 (i.e. use 0 - the default), C<run()> will call C<read()> and C<report()>.
 
 Return value: 0.
 
@@ -980,7 +1048,7 @@ Return value: The object, for method chaining.
 =item o Invalid dates
 
 Invalid dates in Changes/CHANGES cannot be distinguished from comments. That means that if the output file is
-missing one or more versions, it's because of those invalid dates.
+missing one or more versions, it is because of those invalid dates.
 
 =item o Invalid day-of-week (dow)
 
@@ -1034,7 +1102,7 @@ Here is a sample:
 
 =item o What are the reserved tokens in this format?
 
-I'm using tokens to refer to both things in [] such as Module, and things on the left hand side
+I am using tokens to refer to both things in [] such as Module, and things on the left hand side
 of the = signs, such as Date.
 
 And yes, these tokens are case-sensitive.
@@ -1057,7 +1125,7 @@ Sample: Name=Manage::Module::Changes
 
 =back
 
-Under each version's section, whose name is like [V 1.23], the token are as follows.
+Under each version (section), whose name is like [V 1.23], the token are as follows.
 
 L<Config::IniFiles> calls the V in [V 1.23] a Group Name.
 
@@ -1078,7 +1146,7 @@ will normally be processed by a program.
 
 =item o Deploy.Action
 
-The module author's recommendation to the end user.
+The module author makes this recommendation to the end user.
 
 This enables the end user to quickly grep the Changelog.ini, or the output of C<ini.report.pl>,
 for things like security fixes and API changes.
@@ -1100,21 +1168,21 @@ Debug/Info/Notice/Warning/Error/Critical/Alert/Emergency.
 I think the values for these 2 tokens (Deploy.*) should be kept terse, and the Comments section used
 for an expanded explanation, if necessary.
 
-Omitting Deploy.Action simply means the module's author leaves it up to the end user to
+Omitting Deploy.Action simply means the module author leaves it up to the end user to
 read the comments and make up their own mind.
 
 C<reader()> called directly, or via C<ini.report.pl -c> (i.e. old format to ini format converter),
-inserts these 2 tokens if it sees the word /Security/i in the Comments. It's a crude but automatic warning
+inserts these 2 tokens if it sees the word /Security/i in the Comments. It is a crude but automatic warning
 to end users. The HTML output options (C<-t> and C<-w>) use red text via CSS to highlight these 2 tokens.
 
-Of course security is best handled by the module's author explicitly inserting a suitable note.
+Of course security is best handled by the module author explicitly inserting a suitable note.
 
-And, lastly, any such note is purely up to the author's judgement, which means differences in
+And, lastly, any such note is purely up to the judgement of the author, which means differences in
 opinion are inevitable.
 
 =item o Deploy.Reason
 
-The module author's reason for their recommended action.
+The module author gives this reason for their recommended action.
 
 =item o EOT
 
@@ -1124,7 +1192,7 @@ If C<transform()> finds a line beginning with EOT, it jams a '-' in front of it.
 
 =back
 
-=item o Why aren't there more reserved tokens?
+=item o Why are there not more reserved tokens?
 
 Various reasons:
 
@@ -1155,15 +1223,15 @@ Changelog.ini file itself for such items. But that too could be changed.
 
 =item o Are single-line comments acceptable?
 
-Sure. Here's one:
+Sure. Here is one:
 
 	Comments=* INTERNAL: No Changes since 4.20_1. Declaring stable.
 
-The '*' is not special, it's just part of the comment.
+The '*' is not special, it is just part of the comment.
 
-=item o What's with the datetime format?
+=item o What is with the datetime format?
 
-It's called W3CDTF format. See:
+It is called W3CDTF format. See:
 
 http://search.cpan.org/dist/DateTime-Format-W3CDTF/
 
@@ -1206,9 +1274,9 @@ authors produce for most of their releases.
 
 =back
 
-=item o What's the difference between release and version?
+=item o What is the difference between release and version?
 
-I'm using release to refer not just to the version number, but also to all the notes
+I am using release to refer not just to the version number, but also to all the notes
 relating to that version.
 
 And by notes I mean everything in one section under the name [V $version].
@@ -1220,13 +1288,13 @@ applications like this, it can't be hand-written I<by beginners>.
 
 And it's unreasonable to force people to write a simple program to write a simple YAML file.
 
-XML? Nope. It's great is I<some> situations, but too visually dense and slow to write for this one.
+XML? Nope. It is great in I<some> situations, but too visually dense and slow to write for this one.
 
 =item o What about adding Changed Requirements to the file?
 
 No. That info will be in the changed C<Build.PL> or C<Makefile.PL> files.
 
-It's a pointless burden to make the module's author I<also> add that to Changelog.ini.
+It is a pointless burden to make the module author I<also> add that to Changelog.ini.
 
 =item o Who said you had the power to decide on this format?
 
@@ -1240,7 +1308,7 @@ One of the reports I produce from this database is visible here:
 
 http://savage.net.au/Perl-modules.html
 
-Ideally, there will come a time when all of a person's modules, if not the whole of CPAN,
+Ideally, there will come a time when all of your modules, if not the whole of CPAN,
 will have Changelog.ini files, so producing such a report will be easy, and hence will be
 that much more likely to happen.
 
@@ -1264,21 +1332,21 @@ Everything up to the next release, or EOF, is deemed to belong to the release ju
 identified.
 
 This means a line containing a version number without a date is not recognized as a new release,
-so that that line and the following comments are added to the 'current' release's info.
+so that that line and the following comments are added to the 'current' release info.
 
 For an example of this, process the C<Changes> file from CGI::Session (t/Changes), and scan the
-output for '[4.00_01]', which you'll see contains stuff for V 3.12, 3.8 and 3.x.
+output for '[4.00_01]', which you will see contains stuff for V 3.12, 3.8 and 3.x.
 
 See above, under the list of reserved tokens, for how security advisories are inserted in the output
 stream.
 
 =item o Is this conversion process perfect?
 
-Well, no, actually, but it'll be as good as I can make it.
+Well, no, actually, but it will be as good as I can make it.
 
 For example, version numbers like '3.x' are turned into '3.'.
 
-You'll simply have to scrutinize (which means 'read I<carefully>') the output of this conversion process.
+You will simply have to scrutinize (which means 'read I<carefully>') the output of this conversion process.
 
 If a Changes/CHANGES file is not handled by the current version, log a bug report on Request Tracker:
 http://rt.cpan.org/Public/
@@ -1312,25 +1380,25 @@ See the discussion on this page (search for 'parse multiple formats'):
 
 http://datetime.perl.org/index.cgi?FAQBasicUsage
 
-If things get more complicated, I'll reconsider using L<DateTime::Format::Builder>.
+If things get more complicated, I will reconsider using L<DateTime::Format::Builder>.
 
 =item o What happens for 2 releases on the same day?
 
 It depends whether or not the version numbers are different.
 
-L<CGI::Session>'s C<Changes> file contains 2 references to version 4.06 :-(.
+The C<Changes> file for L<CGI::Session> contains 2 references to version 4.06 :-(.
 
-As long as the version numbers are different, the date doesn't actually matter.
+As long as the version numbers are different, the date does not actually matter.
 
-=item o Won't a new file format mean more work for those who maintain CPAN?
+=item o Will a new file format mean more work for those who maintain CPAN?
 
-Yes, I'm afraid so, unless they completely ignore me!
+Yes, I am afraid so, unless they completely ignore me!
 
-But I'm hopeful this will lead to less work overall.
+But I am hopeful this will lead to less work overall.
 
-=item o Why didn't you use the C<Template Toolkit> for the HTML?
+=item o Why did you not use the C<Template Toolkit> for the HTML?
 
-It's too complex for this tiny project.
+It is too complex for this tiny project.
 
 =item o Where do I go for support?
 
