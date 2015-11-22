@@ -1,7 +1,7 @@
-Revision history for Perl extension Manage::Module::Changes.
+Revision history for Perl extension Module::Metadata::Changes.
 
 2.06  2015-11-22T11:32:00
-	- Add repo on github https://github.com/ronsavage/Manage-Module-Changes.
+	- Add repo on github https://github.com/ronsavage/Module::Metadata::Changes.
 	- Change abstract slightly, to include Changelog.ini.
 	- Add a link to CPAN::Changes in 'See Also'.
 	- Switch from Perl6::Slurp to File::Slurper.

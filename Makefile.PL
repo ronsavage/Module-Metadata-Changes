@@ -59,13 +59,13 @@ if ($ExtUtils::MakeMaker::VERSION ge '6.46')
 		},
 		resources   =>
 		{
-		'bugtracker' => 'https://rt.cpan.org/Public/Dist/Display.html?Name=Manage-Module-Changes',
+		'bugtracker' => 'https://rt.cpan.org/Public/Dist/Display.html?Name=Module::Metadata::Changes',
 		'license' => 'http://opensource.org/licenses/Artistic-2.0',
 			repository =>
 			{
 		'type' => 'git',
-		'url' => 'https://github.com/ronsavage/Manage-Module-Changes.git',
-		'web' => 'https://github.com/ronsavage/Manage-Module-Changes',
+		'url' => 'https://github.com/ronsavage/Module::Metadata::Changes.git',
+		'web' => 'https://github.com/ronsavage/Module::Metadata::Changes',
 			},
 		},
 	};

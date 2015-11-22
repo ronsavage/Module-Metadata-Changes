@@ -719,7 +719,7 @@ sub writer
 
 =head1 NAME
 
-Module::Metadata::Changes - Manage a machine-readable Changes/CHANGES file
+Module::Metadata::Changes - Manage machine-readable Changes/CHANGES/Changelog.ini files
 
 =head1 Synopsis
 
@@ -1412,7 +1412,25 @@ advise me on a suitable C<DateTime::Format::*> module to use.
 
 =back
 
-=head1 See also
+=head1 Machine-Readable Change Log
+
+The file Changes was converted into Changelog.ini by L<Module::Metadata::Changes>.
+
+=head1 Version Numbers
+
+Version numbers < 1.00 represent development versions. From 1.00 up, they are production versions.
+
+=head1 Repository
+
+L<https://github.com/ronsavage/Module-Metadata-Changes>.
+
+=head1 Support
+
+Email the author, or log a bug on RT:
+
+L<https://rt.cpan.org/Public/Dist/Display.html?Name=Module::Metadata::Changes>.
+
+=head1 See Also
 
 L<App::ParseCPANChanges>.
 
