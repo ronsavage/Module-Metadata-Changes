@@ -16,4 +16,4 @@ t/Changes
 t/Changes.yml
 t/convert.t
 t/Non.standard.name
-t/pod.t
+xt/author/pod.t

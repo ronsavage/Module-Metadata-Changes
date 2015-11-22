@@ -5,12 +5,12 @@ use ExtUtils::MakeMaker;
 # See lib/ExtUtils/MakeMaker.pm for details of how to influence
 # the contents of the Makefile that is written.
 
-WriteMakefile
+my(%params) =
 (
 	($] ge '5.005') ?
 	(
 		AUTHOR   => 'Ron Savage (ron@savage.net.au)',
-		ABSTRACT => "Manage a module's machine-readable Changes/CHANGES file",
+		ABSTRACT => 'Manage machine-readable Changes/CHANGES/Changelog.ini files',
 	) : (),
 	clean =>
 	{
@@ -43,6 +43,35 @@ WriteMakefile
 	},
 	VERSION_FROM => 'lib/Module/Metadata/Changes.pm',
 );
+
+if ( ($ExtUtils::MakeMaker::VERSION =~ /^\d\.\d\d$/) && ($ExtUtils::MakeMaker::VERSION > 6.30) )
+{
+	$params{LICENSE} = 'artistic_2';
+}
+
+if ($ExtUtils::MakeMaker::VERSION ge '6.46')
+{
+	$params{META_MERGE} =
+	{
+		'meta-spec' =>
+		{
+		'version' => 2,
+		},
+		resources   =>
+		{
+		'bugtracker' => 'https://rt.cpan.org/Public/Dist/Display.html?Name=Manage-Module-Changes',
+		'license' => 'http://opensource.org/licenses/Artistic-2.0',
+			repository =>
+			{
+		'type' => 'git',
+		'url' => 'https://github.com/ronsavage/Manage-Module-Changes.git',
+		'web' => 'https://github.com/ronsavage/Manage-Module-Changes',
+			},
+		},
+	};
+}
+
+WriteMakefile(%params);
 
 print "\a\n";
 print "* Don't forget to install the CSS and *.tmpl files, which are \n";

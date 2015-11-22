@@ -1,12 +1,15 @@
 Revision history for Perl extension Manage::Module::Changes.
 
 2.06  2015-11-22T11:32:00
-	- Add a link to CPAN::Changes in 'See also'.
+	- Add repo on github https://github.com/ronsavage/Manage-Module-Changes.
+	- Change abstract slightly, to include Changelog.ini.
+	- Add a link to CPAN::Changes in 'See Also'.
 	- Switch from Perl6::Slurp to File::Slurper.
 	- Switch from Hash::FieldHash to Moo and Types::Standard.
 	- Remove Build.PL.
 	- Update pre-reqs.
 	- Reformat dates in this file.
+	- Move t/pod.t to xt/author/.
 
 2.05  2013-06-03T12:14:00
 	- Rename CHANGES to Changes as per CPAN::Changes::Spec.
