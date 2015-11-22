@@ -1,0 +1,55 @@
+{
+   "abstract" : "Manage a module's machine-readable Changes/CHANGES file",
+   "author" : [
+      "Ron Savage <ron@savage.net.au>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Module::Build version 0.4005, CPAN::Meta::Converter version 2.120921",
+   "license" : [
+      "artistic_2"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Module-Metadata-Changes",
+   "prereqs" : {
+      "build" : {
+         "requires" : {
+            "Test::More" : "0.96"
+         }
+      },
+      "configure" : {
+         "requires" : {
+            "Module::Build" : "0.38"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "Config::IniFiles" : "2.66",
+            "DateTime" : "0.66",
+            "DateTime::Format::HTTP" : "0.4",
+            "DateTime::Format::Strptime" : "1.5",
+            "DateTime::Format::W3CDTF" : "0.06",
+            "HTML::Entities::Interpolate" : "1.03",
+            "HTML::Template" : "2.9",
+            "Hash::FieldHash" : "0.1",
+            "Perl6::Slurp" : "0.03",
+            "version" : "0.82"
+         }
+      }
+   },
+   "provides" : {
+      "Module::Metadata::Changes" : {
+         "file" : "lib/Module/Metadata/Changes.pm",
+         "version" : "2.05"
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "license" : [
+         "http://www.perlfoundation.org/artistic_license_2_0"
+      ]
+   },
+   "version" : "2.05"
+}
