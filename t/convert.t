@@ -12,8 +12,10 @@ my($config) = Module::Metadata::Changes -> new(verbose => 0);
 isa_ok($config, 'Module::Metadata::Changes', 'Result of new()');
 is(-e './Non.standard.name', 1, './Non.standard.name file exists before conversion');
 
-# Override the default file name to be converted: Changes.
+# Override the default file name (Changes) to be converted:
 # Convert ./Non.standard.name to ./Changelog.ini.
+
+$config -> convert(1);
 
 my($result) = $config -> inFileName('./Non.standard.name');
 
