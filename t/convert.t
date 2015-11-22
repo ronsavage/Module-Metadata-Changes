@@ -21,10 +21,6 @@ my($result) = $config -> run;
 
 is(-e './Changelog.ini', 1, './Changelog.ini exists after conversion');
 
-# Read ./Changelog.ini back in.
-
-$result = $config -> read();
-
 my($release) = $config -> get_latest_release();
 my($expect)  = '4.30';
 
