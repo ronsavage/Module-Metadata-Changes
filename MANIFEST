@@ -11,6 +11,7 @@ MANIFEST			This list of files
 META.json
 META.yml
 README
+TODO
 scripts/report.names.pl
 t/Changelog.ini
 t/Changes

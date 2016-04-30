@@ -1,5 +1,10 @@
 Revision history for Perl extension Module::Metadata::Changes.
 
+2.07  2016-04-30T18:44:00
+	- Add EXE_FILES => ['bin/ini.report.pl'] to Makefile.PL so this program is installed along with
+		the module itself. Thanx to ppisar - at - redhat.com for the patch. See RT#102247. Thanx.
+		My apoligies for the embarrassing delay in doing this.
+
 2.06  2015-11-22T11:32:00
 	- Add repo on github https://github.com/ronsavage/Module::Metadata::Changes.
 	- Change abstract slightly, to include Changelog.ini.
