@@ -50,7 +50,7 @@ my(%params) =
 
 if ( ($ExtUtils::MakeMaker::VERSION =~ /^\d\.\d\d$/) && ($ExtUtils::MakeMaker::VERSION > 6.30) )
 {
-	$params{LICENSE} = 'artistic_2';
+	$params{LICENSE} = 'perl';
 }
 
 if ($ExtUtils::MakeMaker::VERSION ge '6.46')
@@ -61,15 +61,18 @@ if ($ExtUtils::MakeMaker::VERSION ge '6.46')
 		{
 		'version' => 2,
 		},
-		resources   =>
+		resources =>
 		{
-		'bugtracker' => 'https://rt.cpan.org/Public/Dist/Display.html?Name=Module::Metadata::Changes',
-		'license' => 'http://opensource.org/licenses/Artistic-2.0',
-			repository =>
+			bugtracker =>
 			{
-		'type' => 'git',
-		'url' => 'https://github.com/ronsavage/Module::Metadata::Changes.git',
-		'web' => 'https://github.com/ronsavage/Module::Metadata::Changes',
+				web => 'https://rt.cpan.org/Public/Dist/Display.html?Name=Module::Metadata::Changes',
+			},
+			license		=> 'http://dev.perl.org/licenses/',
+			repository	=>
+			{
+				type	=> 'git',
+				url		=> 'https://github.com/ronsavage/Module-Metadata-Changes.git',
+				web		=> 'https://github.com/ronsavage/Module-Metadata-Changes',
 			},
 		},
 	};
