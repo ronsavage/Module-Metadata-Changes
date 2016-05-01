@@ -1,5 +1,9 @@
 Revision history for Perl extension Module::Metadata::Changes.
 
+2.08  2016-05-01T11:10:00
+	- Change licence to Perl. See LICENSE file.
+	- Update pre-reqs.
+
 2.07  2016-04-30T18:44:00
 	- Add EXE_FILES => ['bin/ini.report.pl'] to Makefile.PL so this program is installed along with
 		the module itself. Thanx to ppisar - at - redhat.com for the patch. See RT#102247. Thanx.
