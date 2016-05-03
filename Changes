@@ -1,6 +1,6 @@
 Revision history for Perl extension Module::Metadata::Changes.
 
-2.10  2016-05-04T08;15:00
+2.10  2016-05-04T08:15:00
 	- Correct physical address of Free Software Foundation in LICENSE file. See RT#114149.
 		Thanx to Petr Pisar.
 
