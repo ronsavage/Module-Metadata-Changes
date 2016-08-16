@@ -49,9 +49,8 @@ my(%params) =
 	},
 	TEST_REQUIRES =>
 	{
-		'Test::More'	=> 0,
-		'Test::Stream'	=> 1.302026,
-		'Test::Pod'		=> 1.48,
+		'Test::Pod'		=> 1.51,
+		'Test::Simple'	=> 1.302052, # For Test::More.
 	},
 	VERSION_FROM => 'lib/Module/Metadata/Changes.pm',
 );

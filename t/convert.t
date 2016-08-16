@@ -1,4 +1,9 @@
-use Test::Stream -V1;
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+use Test::More;
 
 BEGIN {chdir 't' if -d 't'}
 use lib '../lib';

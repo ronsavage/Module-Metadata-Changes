@@ -1,5 +1,10 @@
 Revision history for Perl extension Module::Metadata::Changes.
 
+2.11  2016-08-14T11:33:00
+	- Stop using Test::Stream. Use Test::More shipped in the Test::Simple distro.
+		See RT#116930. Thanx to Chad Granum.
+	- Update version #s in pre-reqs.
+
 2.10  2016-05-04T08:15:00
 	- Correct physical address of Free Software Foundation in LICENSE file. See RT#114149.
 		Thanx to Petr Pisar.
